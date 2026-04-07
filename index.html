@@ -201,6 +201,46 @@
       overflow: hidden;
     }
 
+    [data-reveal] {
+      --parallax-offset: 0px;
+      opacity: 0;
+      transform: translate3d(0, calc(18px + var(--parallax-offset)), 0);
+      animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      animation-delay: var(--reveal-delay, 0ms);
+      transition:
+        opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: transform, opacity;
+    }
+
+    [data-reveal="left"] {
+      transform: translate3d(-28px, calc(22px + var(--parallax-offset)), 0) rotate(-1deg);
+    }
+
+    [data-reveal="right"] {
+      transform: translate3d(28px, calc(22px + var(--parallax-offset)), 0) rotate(1deg);
+    }
+
+    [data-reveal="up"] {
+      transform: translate3d(0, calc(34px + var(--parallax-offset)), 0);
+    }
+
+    @keyframes revealIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, var(--parallax-offset), 0) rotate(0deg) scale(1);
+      }
+    }
+
+    .is-visible {
+      opacity: 1;
+      transform: translate3d(0, var(--parallax-offset), 0) rotate(0deg) scale(1);
+    }
+
     .section-panel::before {
       content: "";
       position: absolute;
@@ -257,12 +297,14 @@
       grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
       gap: 1.5rem;
       align-items: stretch;
+      will-change: transform;
     }
 
     .hero-copy,
     .hero-board {
       position: relative;
       min-width: 0;
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .hero-copy {
@@ -479,6 +521,7 @@
       align-items: flex-end;
       justify-content: flex-start;
       position: relative;
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .mini-tile img {
@@ -701,6 +744,7 @@
 
     .app-card {
       --card-accent: var(--teal);
+      --card-accent-rgb: 31 191 208;
       --card-accent-soft: rgba(31, 191, 208, 0.14);
       position: relative;
       grid-column: span 6;
@@ -715,6 +759,12 @@
         var(--card-accent-soft);
       box-shadow: var(--shadow);
       overflow: hidden;
+      transition:
+        transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
     }
 
     .app-card::before {
@@ -727,7 +777,9 @@
       border-radius: 36px;
       background: radial-gradient(circle, var(--card-accent-soft), transparent 70%);
       transform: rotate(18deg);
+      opacity: 0.72;
       pointer-events: none;
+      transition: transform 0.45s ease, opacity 0.45s ease;
     }
 
     .app-card::after {
@@ -738,30 +790,60 @@
       height: 7px;
       background: linear-gradient(90deg, var(--card-accent), transparent 88%);
       opacity: 0.95;
+      transition: height 0.25s ease, opacity 0.25s ease, background 0.25s ease;
     }
 
     .app-card:nth-child(1) {
       grid-column: span 7;
       --card-accent: var(--sage);
+      --card-accent-rgb: 109 148 104;
       --card-accent-soft: rgba(109, 148, 104, 0.18);
     }
 
     .app-card:nth-child(2) {
       grid-column: span 5;
       --card-accent: var(--teal);
+      --card-accent-rgb: 31 191 208;
       --card-accent-soft: rgba(31, 191, 208, 0.18);
     }
 
     .app-card:nth-child(3) {
       grid-column: span 5;
       --card-accent: var(--magenta);
+      --card-accent-rgb: 163 61 216;
       --card-accent-soft: rgba(163, 61, 216, 0.16);
     }
 
     .app-card:nth-child(4) {
       grid-column: span 7;
       --card-accent: var(--rust);
+      --card-accent-rgb: 195 74 45;
       --card-accent-soft: rgba(195, 74, 45, 0.15);
+    }
+
+    .app-card:hover,
+    .app-card:focus-within {
+      transform: translateY(-10px);
+      border-color: rgb(var(--card-accent-rgb) / 0.34);
+      background:
+        linear-gradient(180deg, rgba(255, 254, 250, 0.98), rgba(255, 248, 236, 0.9)),
+        linear-gradient(135deg, rgb(var(--card-accent-rgb) / 0.18), transparent 58%);
+      box-shadow:
+        0 26px 40px rgba(58, 41, 21, 0.14),
+        0 0 0 1px rgb(var(--card-accent-rgb) / 0.08),
+        0 14px 36px rgb(var(--card-accent-rgb) / 0.12);
+    }
+
+    .app-card:hover::before,
+    .app-card:focus-within::before {
+      opacity: 1;
+      transform: rotate(8deg) scale(1.12);
+    }
+
+    .app-card:hover::after,
+    .app-card:focus-within::after {
+      height: 11px;
+      background: linear-gradient(90deg, var(--card-accent), rgb(var(--card-accent-rgb) / 0.18));
     }
 
     .app-card-header {
@@ -779,6 +861,7 @@
       flex-shrink: 0;
       box-shadow: 0 16px 28px rgba(32, 25, 17, 0.12);
       background: rgba(255, 255, 255, 0.7);
+      transition: transform 0.32s ease, box-shadow 0.32s ease;
     }
 
     .app-icon img {
@@ -795,6 +878,7 @@
       line-height: 1.05;
       letter-spacing: -0.04em;
       color: var(--ink);
+      transition: color 0.25s ease, transform 0.25s ease;
     }
 
     .app-category {
@@ -803,6 +887,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.02em;
+      transition: color 0.25s ease;
     }
 
     .app-badges,
@@ -829,6 +914,7 @@
       color: var(--ink-soft);
       border: 1px solid rgba(32, 25, 17, 0.08);
       background: rgba(255, 255, 255, 0.56);
+      transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
     }
 
     .badge-star {
@@ -860,6 +946,7 @@
       font-size: 0.95rem;
       line-height: 1.7;
       flex: 1;
+      transition: color 0.25s ease;
     }
 
     .app-features {
@@ -874,6 +961,7 @@
       margin-top: 1.35rem;
       padding-top: 1.15rem;
       border-top: 1px dashed rgba(32, 25, 17, 0.16);
+      transition: border-color 0.25s ease;
     }
 
     .play-btn {
@@ -887,6 +975,7 @@
       font-size: 0.84rem;
       font-weight: 800;
       box-shadow: 0 16px 24px rgba(32, 25, 17, 0.14);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease, color 0.28s ease;
     }
 
     .play-btn:hover {
@@ -894,7 +983,61 @@
       box-shadow: 0 20px 30px rgba(32, 25, 17, 0.18);
     }
 
-    .play-btn svg { flex-shrink: 0; }
+    .play-btn svg {
+      flex-shrink: 0;
+      transition: transform 0.28s ease;
+    }
+
+    .app-card:hover .app-icon,
+    .app-card:focus-within .app-icon {
+      transform: translateY(-4px) rotate(-4deg) scale(1.04);
+      box-shadow: 0 22px 34px rgb(var(--card-accent-rgb) / 0.24);
+    }
+
+    .app-card:hover .app-name,
+    .app-card:focus-within .app-name {
+      color: var(--card-accent);
+      transform: translateX(2px);
+    }
+
+    .app-card:hover .app-category,
+    .app-card:focus-within .app-category,
+    .app-card:hover .app-desc,
+    .app-card:focus-within .app-desc {
+      color: #473a2d;
+    }
+
+    .app-card:hover .badge:not(.badge-star):not(.badge-free):not(.badge-paid):not(.badge-new),
+    .app-card:focus-within .badge:not(.badge-star):not(.badge-free):not(.badge-paid):not(.badge-new),
+    .app-card:hover .feature-chip,
+    .app-card:focus-within .feature-chip {
+      background: rgb(var(--card-accent-rgb) / 0.11);
+      border-color: rgb(var(--card-accent-rgb) / 0.18);
+      color: color-mix(in srgb, var(--ink) 84%, var(--card-accent) 16%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
+    }
+
+    .app-card:hover .feature-chip:nth-child(even),
+    .app-card:focus-within .feature-chip:nth-child(even) {
+      transform: translateY(-2px);
+    }
+
+    .app-card:hover .app-card-footer,
+    .app-card:focus-within .app-card-footer {
+      border-top-color: rgb(var(--card-accent-rgb) / 0.26);
+    }
+
+    .app-card:hover .play-btn,
+    .app-card:focus-within .play-btn {
+      background: linear-gradient(135deg, rgb(var(--card-accent-rgb) / 0.92), rgb(var(--card-accent-rgb) / 0.72));
+      color: #fffaf0;
+      box-shadow: 0 18px 28px rgb(var(--card-accent-rgb) / 0.22);
+    }
+
+    .app-card:hover .play-btn svg,
+    .app-card:focus-within .play-btn svg {
+      transform: translateX(2px);
+    }
 
     .contact-stage {
       position: relative;
@@ -1009,6 +1152,10 @@
       color: var(--ink);
     }
 
+    .site-footer {
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
     .divider {
       width: min(1160px, calc(100% - 2rem));
       height: 20px;
@@ -1104,6 +1251,26 @@
         flex-direction: column;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      [data-reveal],
+      [data-reveal="left"],
+      [data-reveal="right"],
+      [data-reveal="up"] {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1121,8 +1288,8 @@
 
     <main>
       <header class="hero" id="home">
-        <div class="container hero-grid">
-          <div class="hero-copy">
+        <div class="container hero-grid" data-parallax-group>
+          <div class="hero-copy" data-reveal="left" style="--reveal-delay: 80ms;" data-parallax="-10">
             <div class="hero-badge">
               <span class="dot" aria-hidden="true"></span>
               Senior Flutter Developer
@@ -1142,19 +1309,19 @@
             </div>
           </div>
 
-          <div class="hero-board" aria-hidden="true">
+          <div class="hero-board" aria-hidden="true" data-reveal="right" style="--reveal-delay: 180ms;" data-parallax="12">
             <div class="hero-collage">
               <div class="hero-collage-grid">
-                <div class="mini-tile">
+                <div class="mini-tile" data-reveal="up" style="--reveal-delay: 240ms;">
                   <img src="assets/5prayers-icon.png" alt="" width="84" height="84" loading="lazy" />
                 </div>
-                <div class="mini-tile">
+                <div class="mini-tile" data-reveal="up" style="--reveal-delay: 300ms;">
                   <img src="assets/konvertr-icon.png" alt="" width="84" height="84" loading="lazy" />
                 </div>
-                <div class="mini-tile">
+                <div class="mini-tile" data-reveal="up" style="--reveal-delay: 360ms;">
                   <img src="assets/konvertrpro-icon.png" alt="" width="84" height="84" loading="lazy" />
                 </div>
-                <div class="mini-tile">
+                <div class="mini-tile" data-reveal="up" style="--reveal-delay: 420ms;">
                   <img src="assets/explorelahore-icon.png" alt="" width="84" height="84" loading="lazy" />
                 </div>
               </div>
@@ -1168,11 +1335,11 @@
       </header>
 
       <section id="about">
-        <div class="container section-panel about-panel">
+        <div class="container section-panel about-panel" data-reveal="up">
           <p class="section-label">About me</p>
           <h2 class="section-title">Building with Flutter,<br />shipping with purpose.</h2>
           <div class="about-layout">
-            <div class="about-copy">
+            <div class="about-copy" data-reveal="left" style="--reveal-delay: 80ms;">
               <p>
                 I'm a Senior Flutter Developer based in Pakistan, crafting clean, fast, and thoughtful
                 mobile apps through my indie studio <strong>Mishmash Labs</strong>.
@@ -1196,20 +1363,20 @@
               </div>
             </div>
 
-            <div class="about-stats">
-              <div class="stat-card">
+            <div class="about-stats" data-reveal="right" style="--reveal-delay: 160ms;">
+              <div class="stat-card" data-reveal="up" style="--reveal-delay: 200ms;">
                 <div class="stat-number">4<span>+</span></div>
                 <div class="stat-label">Published apps</div>
               </div>
-              <div class="stat-card">
+              <div class="stat-card" data-reveal="up" style="--reveal-delay: 260ms;">
                 <div class="stat-number">1K<span>+</span></div>
                 <div class="stat-label">Downloads</div>
               </div>
-              <div class="stat-card">
+              <div class="stat-card" data-reveal="up" style="--reveal-delay: 320ms;">
                 <div class="stat-number">5.0<span>★</span></div>
                 <div class="stat-label">Average rating</div>
               </div>
-              <div class="stat-card">
+              <div class="stat-card" data-reveal="up" style="--reveal-delay: 380ms;">
                 <div class="stat-number">80<span>+</span></div>
                 <div class="stat-label">User reviews</div>
               </div>
@@ -1221,8 +1388,8 @@
       <div class="divider"></div>
 
       <section id="apps" class="apps-section">
-        <div class="container section-panel apps-shell">
-          <div class="apps-header">
+        <div class="container section-panel apps-shell" data-reveal="up">
+          <div class="apps-header" data-reveal="up" style="--reveal-delay: 60ms;">
             <div>
               <p class="section-label">My Apps</p>
               <h2 class="section-title">Made with care. Shipped with pride.</h2>
@@ -1233,7 +1400,7 @@
           </div>
 
           <div class="apps-grid">
-            <article class="app-card">
+            <article class="app-card" data-reveal="left" style="--reveal-delay: 100ms;">
               <div class="app-card-header">
                 <div class="app-icon">
                   <img src="assets/5prayers-icon.png" alt="5 Prayers app icon" width="72" height="72" loading="lazy" />
@@ -1274,7 +1441,7 @@
               </div>
             </article>
 
-            <article class="app-card">
+            <article class="app-card" data-reveal="right" style="--reveal-delay: 160ms;">
               <div class="app-card-header">
                 <div class="app-icon">
                   <img src="assets/konvertr-icon.png" alt="Konvertr app icon" width="72" height="72" loading="lazy" />
@@ -1314,7 +1481,7 @@
               </div>
             </article>
 
-            <article class="app-card">
+            <article class="app-card" data-reveal="left" style="--reveal-delay: 220ms;">
               <div class="app-card-header">
                 <div class="app-icon">
                   <img src="assets/konvertrpro-icon.png" alt="Konvertr app icon" width="72" height="72" loading="lazy" />
@@ -1354,7 +1521,7 @@
               </div>
             </article>
 
-            <article class="app-card">
+            <article class="app-card" data-reveal="right" style="--reveal-delay: 280ms;">
               <div class="app-card-header">
                 <div class="app-icon">
                   <img src="assets/explorelahore-icon.png" alt="Explore Lahore app icon" width="72" height="72" loading="lazy" />
@@ -1401,14 +1568,14 @@
 
       <section id="contact">
         <div class="container">
-          <div class="contact-stage">
+          <div class="contact-stage" data-reveal="up">
             <p class="section-label">Contact</p>
             <h2 class="section-title">Let's work together.</h2>
             <p class="section-sub">
               Have a project in mind, a bug to report, or just want to say hi?
               I'm always open to interesting conversations.
             </p>
-            <div class="contact-links">
+            <div class="contact-links" data-reveal="up" style="--reveal-delay: 100ms;">
               <a href="mailto:mishmash.labs@gmail.com" class="contact-link">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -1429,7 +1596,7 @@
               </a>
             </div>
             <a href="https://play.google.com/store/apps/dev?id=5114658008790714296"
-               target="_blank" rel="noopener noreferrer" class="play-store-cta">
+              target="_blank" rel="noopener noreferrer" class="play-store-cta" data-reveal="up" style="--reveal-delay: 180ms;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M3.18 23.76c.33.18.7.24 1.08.14l11.6-6.7-2.55-2.55-10.13 9.11zm-1.18-20.8v18.08c0 .53.28 1 .74 1.26l.12.06 10.12-10.13-10.12-10.12-.12.07c-.46.25-.74.73-.74 1.26v-.48zm17.56 8.37l-2.24-1.29-2.84 2.84 2.84 2.83 2.27-1.31c.65-.37.65-1.3-.03-1.67l-.01-.4zm-14.71 10.67l11.6-6.7-2.55-2.55-9.05 9.05v.2z"/>
               </svg>
@@ -1440,12 +1607,71 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer" data-reveal="up" style="--reveal-delay: 80ms;">
       <p>
         © 2026 <a href="#">Mishmash Labs</a> · Built by
         <a href="https://www.linkedin.com/in/fawadakhan93/" target="_blank" rel="noopener noreferrer">Fawad Khan</a>
       </p>
     </footer>
   </div>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const parallaxGroup = document.querySelector('[data-parallax-group]');
+      const parallaxItems = document.querySelectorAll('[data-parallax]');
+
+      if (reduceMotion.matches) {
+        parallaxItems.forEach((item) => {
+          item.style.setProperty('--parallax-offset', '0px');
+        });
+        return;
+      }
+
+      let ticking = false;
+
+      const updateParallax = () => {
+        ticking = false;
+
+        if (!parallaxGroup || !parallaxItems.length) {
+          return;
+        }
+
+        const rect = parallaxGroup.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+        const clamped = Math.max(0, Math.min(1, progress));
+
+        parallaxItems.forEach((item) => {
+          const amount = Number(item.dataset.parallax || 0);
+          const y = (clamped - 0.5) * amount;
+          item.style.setProperty('--parallax-offset', `${y.toFixed(2)}px`);
+        });
+      };
+
+      const requestParallax = () => {
+        if (ticking) {
+          return;
+        }
+
+        ticking = true;
+        window.requestAnimationFrame(updateParallax);
+      };
+
+      updateParallax();
+      window.addEventListener('scroll', requestParallax, { passive: true });
+      window.addEventListener('resize', requestParallax);
+
+      reduceMotion.addEventListener('change', (event) => {
+        if (event.matches) {
+          parallaxItems.forEach((item) => {
+            item.style.setProperty('--parallax-offset', '0px');
+          });
+          return;
+        }
+
+        requestParallax();
+      });
+    })();
+  </script>
 </body>
 </html>
