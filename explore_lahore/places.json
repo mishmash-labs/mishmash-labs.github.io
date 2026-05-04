@@ -1,5 +1,5 @@
 ﻿{
-    "version": 3,
+    "version": 4,
     "places": [
         {
             "id": "lahore-fort",
@@ -1976,6 +1976,35 @@
             "googleMapsUrl": "https://maps.app.goo.gl/9R6hE29B9vFmGf8h7",
             "websiteUrl": "",
             "instagramUrl": "https://www.instagram.com/sitaramhaveli",
+            "facebookUrl": "",
+            "alternateLocations": []
+        },
+        {
+            "id": "funfinity-lake-city",
+            "name": "Funfinity",
+            "categoryId": "attractions",
+            "tagline": "A sprawling indoor adventure hub featuring one of the largest soft play areas in the region, designed for physical and cognitive development.",
+            "area": "2nd Floor, Lake City Mall, Lake City",
+            "timings": "11:00 AM to 8:00 PM (Daily)",
+            "ticketPrice": "Passes typically range from PKR 1,500 to 2,500; individual attraction rates and group packages available at the counter.",
+            "bestDays": "Weekdays for a more relaxed experience with shorter wait times for popular slides; Weekends for a vibrant social atmosphere.",
+            "bestMonths": "Year-round",
+            "bestWeather": "An ideal climate-controlled indoor destination regardless of outdoor conditions.",
+            "visitDuration": "2 to 3 hours",
+            "familyFriendly": true,
+            "whyVisit": "Funfinity is designed to be a premier indoor recreation space, offering a massive multi-story structure filled with interactive obstacles, giant slides, and sensory play zones. Located within Lake City Mall, it provides a safe and engaging environment for children to exercise and explore, making it a key anchor for family entertainment in the southern Lahore area.",
+            "tip": "Grip socks are mandatory for all children entering the play area; visitors can bring their own or purchase a pair at the registration desk. The facility is located on the 2nd floor, accessible via the mall's main elevators and escalators. Its proximity to the food court and cinema makes it easy to coordinate a full afternoon of activities.",
+            "tags": [
+                "Indoor Play Area",
+                "Soft Play",
+                "Kids Adventure",
+                "Lake City Mall",
+                "Family Entertainment",
+                "Interactive Gaming"
+            ],
+            "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Funfinity+Lake+City+Mall+Lahore",
+            "websiteUrl": "https://www.funfinitypk.com/",
+            "instagramUrl": "https://www.instagram.com/funfinity_lakecity",
             "facebookUrl": "",
             "alternateLocations": []
         }
