@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fawad Khan — Flutter Developer & Mishmash Labs</title>
-  <meta name="description" content="Fawad Khan is a Senior Flutter Developer building thoughtful Android apps through Mishmash Labs. Explore 5 Prayers, Konvertr, and Explore Lahore." />
+  <meta name="description" content="Fawad Khan is a Senior Flutter Developer building thoughtful Android apps through Mishmash Labs. Explore 5 Prayers, Konvertr, Word Sleuth, and Explore Lahore." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -545,6 +545,10 @@
 
     .mini-tile:nth-child(4) {
       background: linear-gradient(135deg, rgba(195, 74, 45, 0.36), rgba(246, 183, 45, 0.16));
+    }
+
+    .mini-tile:nth-child(5) {
+      background: linear-gradient(135deg, rgba(71, 90, 166, 0.36), rgba(31, 191, 208, 0.18));
     }
 
     .mini-tile::after {
@@ -1324,6 +1328,9 @@
                 <div class="mini-tile" data-reveal="up" style="--reveal-delay: 420ms;">
                   <img src="assets/explorelahore-icon.png" alt="" width="84" height="84" loading="lazy" />
                 </div>
+                <div class="mini-tile" data-reveal="up" style="--reveal-delay: 480ms;">
+                  <img src="assets/wordsleuth-icon.png" alt="" width="84" height="84" loading="lazy" />
+                </div>
               </div>
             </div>
             <div class="hero-ribbon">
@@ -1347,8 +1354,8 @@
                 that genuinely helps people in their day-to-day lives.
               </p>
               <p>
-                From Muslim prayer tools to unit converters and city guides — every app I ship is
-                ad-light or ad-free, zero tracking, and built to last.
+                From Muslim prayer tools to unit converters, word games, and city guides — every
+                app I ship is ad-light or ad-free, zero tracking, and built to last.
               </p>
               <h3>Tech &amp; Skills</h3>
               <div class="skill-tags">
@@ -1365,7 +1372,7 @@
 
             <div class="about-stats" data-reveal="right" style="--reveal-delay: 160ms;">
               <div class="stat-card" data-reveal="up" style="--reveal-delay: 200ms;">
-                <div class="stat-number">4<span>+</span></div>
+                <div class="stat-number">5<span>+</span></div>
                 <div class="stat-label">Published apps</div>
               </div>
               <div class="stat-card" data-reveal="up" style="--reveal-delay: 260ms;">
@@ -1554,6 +1561,47 @@
               </div>
               <div class="app-card-footer">
                 <a href="https://play.google.com/store/apps/details?id=com.mishmash.explorelahore"
+                   target="_blank" rel="noopener noreferrer" class="play-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M3.18 23.76c.33.18.7.24 1.08.14l11.6-6.7-2.55-2.55-10.13 9.11zm-1.18-20.8v18.08c0 .53.28 1 .74 1.26l.12.06 10.12-10.13-10.12-10.12-.12.07c-.46.25-.74.73-.74 1.26v-.48zm17.56 8.37l-2.24-1.29-2.84 2.84 2.84 2.83 2.27-1.31c.65-.37.65-1.3-.03-1.67l-.01-.4zm-14.71 10.67l11.6-6.7-2.55-2.55-9.05 9.05v.2z"/>
+                  </svg>
+                  View on Google Play
+                </a>
+              </div>
+            </article>
+
+            <article class="app-card" data-reveal="left" style="--reveal-delay: 340ms;">
+              <div class="app-card-header">
+                <div class="app-icon">
+                  <img src="assets/wordsleuth-icon.png" alt="Word Sleuth app icon" width="72" height="72" loading="lazy" />
+                </div>
+                <div class="app-meta">
+                  <div class="app-name">Word Sleuth: Logic Word Games</div>
+                  <div class="app-category">Games · Word</div>
+                  <div class="app-badges">
+                    <span class="badge">New release</span>
+                    <span class="badge badge-free">Free</span>
+                    <span class="badge">0+ downloads</span>
+                  </div>
+                </div>
+              </div>
+              <p class="app-desc">
+                A modern collection of logic-first word puzzles built for quick sessions and longer
+                streaks. Solve clue-driven cases, crack five-letter ciphers, sort categories, hunt
+                hidden words, and keep your progress rolling with clean, readable gameplay.
+              </p>
+              <div class="app-features">
+                <span class="feature-chip">Logic Deduction</span>
+                <span class="feature-chip">Cipher Lock</span>
+                <span class="feature-chip">Category Matrix</span>
+                <span class="feature-chip">Lexical Extraction</span>
+                <span class="feature-chip">String Resolution</span>
+                <span class="feature-chip">Saved progress</span>
+                <span class="feature-chip">Stats &amp; achievements</span>
+                <span class="feature-chip">Pro upgrade available</span>
+              </div>
+              <div class="app-card-footer">
+                <a href="https://play.google.com/store/apps/details?id=com.mishmash.wordsleuth"
                    target="_blank" rel="noopener noreferrer" class="play-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M3.18 23.76c.33.18.7.24 1.08.14l11.6-6.7-2.55-2.55-10.13 9.11zm-1.18-20.8v18.08c0 .53.28 1 .74 1.26l.12.06 10.12-10.13-10.12-10.12-.12.07c-.46.25-.74.73-.74 1.26v-.48zm17.56 8.37l-2.24-1.29-2.84 2.84 2.84 2.83 2.27-1.31c.65-.37.65-1.3-.03-1.67l-.01-.4zm-14.71 10.67l11.6-6.7-2.55-2.55-9.05 9.05v.2z"/>
