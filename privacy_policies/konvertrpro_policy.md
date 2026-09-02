@@ -1,10 +1,10 @@
 # Privacy Policy for Konvertr Pro
 
-Effective date: May 15, 2026
+Effective date: September 2, 2026
 
 This Privacy Policy explains how Konvertr Pro, published by Mishmash Labs, handles information.
 
-Konvertr Pro is designed as an offline-first unit converter and utility toolkit. In addition to unit conversion, the pro version includes premium features such as favorites, calculator history, converter history, themes, settings, and extra utility tools.
+Konvertr Pro is designed as an offline-first unit converter and utility toolkit available on Android and iOS. In addition to unit conversion, the pro version includes premium features such as favorites, calculator history, converter history, themes, settings, and extra utility tools.
 
 ## Summary
 
@@ -17,7 +17,7 @@ Konvertr Pro is designed as an offline-first unit converter and utility toolkit.
 
 ## Information We Collect
 
-Based on the app code reviewed for this release, Konvertr Pro does not collect personal information for transmission to Mishmash Labs servers, and the reviewed Android release manifest does not request Internet permission for the main app.
+Based on the app code reviewed for this release, Konvertr Pro does not collect personal information for transmission to Mishmash Labs servers. The reviewed Android release manifest does not request Internet permission for the main app, and the iOS version is designed to work without network access for the main app.
 
 Konvertr Pro is intended to work without requiring a sign-in account or cloud profile.
 

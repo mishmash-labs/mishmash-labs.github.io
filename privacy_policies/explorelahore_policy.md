@@ -1,15 +1,15 @@
 # Privacy Policy
 
-Last updated: May 15, 2026
+Last updated: September 2, 2026
 
-Explore Lahore ("the app," "we," "our," or "us") is a local-first city guide designed to help people discover places in Lahore, save favorites, build itineraries, and keep a personal visit history. This Privacy Policy explains what information the app stores, when data may be sent off your device, which third-party services are involved, and what choices you have.
+Explore Lahore ("the app," "we," "our," or "us") is a local-first city guide available on Android and iOS, designed to help people discover places in Lahore, save favorites, build itineraries, and keep a personal visit history. This Privacy Policy explains what information the app stores, when data may be sent off your device, which third-party services are involved, and what choices you have.
 
 ## Quick summary
 
 - No account is required to use the app.
 - We do not request GPS or location permission, camera access, microphone access, contacts, or photo library access.
 - Your favorites, recently viewed places, itineraries, and visited-place history are stored locally on your device.
-- On Android, the app uses Google Mobile Ads and Google's consent flow, including a Privacy choices entry point when required.
+- On Android and iOS, the app uses Google Mobile Ads and Google's consent flow, including a Privacy choices entry point when required.
 - In supported builds, the app may check a hosted manifest and download updated place data over HTTPS.
 - When you open external links or use sharing features, you interact with third-party apps and services under their own privacy practices.
 
@@ -27,9 +27,9 @@ This information is stored in local app storage, including a local on-device dat
 
 ## Information sent off your device
 
-### 1. Advertising and consent on Android
+### 1. Advertising and consent
 
-On Android, Explore Lahore uses Google Mobile Ads to show native advertisements in selected parts of the app. The app also uses Google's User Messaging Platform consent flow when required so users can review or update ad-related privacy choices.
+On Android and iOS, Explore Lahore uses Google Mobile Ads to show native advertisements in selected parts of the app. The app also uses Google's User Messaging Platform consent flow when required so users can review or update ad-related privacy choices.
 
 When ads are requested, displayed, measured, or when consent is managed, Google and its partners may process information such as device identifiers, advertising identifiers, IP address, diagnostics, and ad interaction data under Google's own policies. We do not control how Google processes that information once it is collected by Google's services.
 
@@ -94,4 +94,4 @@ We may update this Privacy Policy from time to time to reflect app changes, rele
 
 ## Contact
 
-If you have privacy questions about Explore Lahore, use the developer support contact details listed on the Google Play store page for the app.
+If you have privacy questions about Explore Lahore, use the developer support contact details listed on the Google Play or Apple App Store listing for the app.

@@ -1,8 +1,8 @@
 # Word Sleuth Privacy Policy
 
-Effective date: May 13, 2026
+Effective date: September 2, 2026
 
-Word Sleuth is an Android word puzzle app that offers multiple single-player game modes, local progress saving, optional advertising, and an optional in-app purchase for Pro features. This Privacy Policy explains what information is handled when you use the app, how it is used, and what choices you have.
+Word Sleuth is an Android and iOS word puzzle app that offers multiple single-player game modes, local progress saving, optional advertising, and an optional in-app purchase for Pro features. This Privacy Policy explains what information is handled when you use the app, how it is used, and what choices you have.
 
 ## 1. Summary
 
@@ -10,8 +10,8 @@ Word Sleuth is an Android word puzzle app that offers multiple single-player gam
 - Word Sleuth does not ask you to submit your name, email address, phone number, or home address inside the app.
 - Gameplay progress, statistics, achievements, and settings are stored locally on your device.
 - The app uses Google AdMob to show ads in the free version.
-- The app uses Google Play billing for optional in-app purchases.
-- The app does not request Android camera, microphone, contacts, or precise location permissions.
+- The app uses Google Play Billing on Android and Apple's in-app purchase services on iOS for optional in-app purchases.
+- The app does not request camera, microphone, contacts, or precise location permissions on either platform.
 
 ## 2. Information We Handle
 
@@ -41,7 +41,7 @@ This information is used by Google to deliver, limit, personalize where permitte
 
 ### C. In-app purchase data
 
-If you choose to buy Word Sleuth Pro, payment processing and purchase restoration are handled by Google Play. The app may receive purchase status information needed to unlock your Pro access, restore it on eligible devices, and remember that status locally.
+If you choose to buy Word Sleuth Pro, payment processing and purchase restoration are handled by Google Play on Android or Apple on iOS. The app may receive purchase status information needed to unlock your Pro access, restore it on eligible devices, and remember that status locally.
 
 Word Sleuth does not process your payment card details directly.
 
@@ -86,7 +86,7 @@ You can choose to:
 
 ## 7. Children
 
-Word Sleuth is a general-audience puzzle game and is not intended to knowingly collect personal information directly from children through an in-app account or profile system. If you believe information has been handled in a way that raises a privacy concern, use the developer contact details shown on the Google Play listing for Word Sleuth.
+Word Sleuth is a general-audience puzzle game and is not intended to knowingly collect personal information directly from children through an in-app account or profile system. If you believe information has been handled in a way that raises a privacy concern, use the developer contact details shown on the Google Play or Apple App Store listing for Word Sleuth.
 
 ## 8. Security
 
@@ -102,13 +102,14 @@ This Privacy Policy may be updated from time to time. If changes are made, the u
 
 ## 11. Contact
 
-For privacy questions or requests about Word Sleuth, use the developer support contact details listed on the Google Play store page for the app.
+For privacy questions or requests about Word Sleuth, use the developer support contact details listed on the Google Play or Apple App Store listing for the app.
 
 ## 12. Third-Party Services
 
 Word Sleuth currently relies on third-party services that may have their own privacy terms, including:
 
 - Google AdMob / Google Mobile Ads
-- Google Play billing / Google Play services
+- Google Play Billing / Google Play services on Android
+- Apple App Store / StoreKit on iOS
 
 You should review those providers' policies if you want more detail about how they process data on their systems.

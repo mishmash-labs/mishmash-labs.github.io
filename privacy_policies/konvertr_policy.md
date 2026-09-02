@@ -1,10 +1,10 @@
 # Privacy Policy for Konvertr
 
-Effective date: May 15, 2026
+Effective date: September 2, 2026
 
 This Privacy Policy explains how Konvertr, the free version of the app published by Mishmash Labs, handles information.
 
-Konvertr is designed to be a fast, mostly offline unit converter. The free version focuses on conversion features and includes an in-app option that can open the Google Play listing for Konvertr Pro if you choose to upgrade.
+Konvertr is designed to be a fast, mostly offline unit converter available on Android and iOS. The free version focuses on conversion features and includes an in-app option that can open the applicable store listing for Konvertr Pro if you choose to upgrade.
 
 ## Summary
 
@@ -13,7 +13,7 @@ Konvertr is designed to be a fast, mostly offline unit converter. The free versi
 - Konvertr does not sell your personal information.
 - Konvertr does not include third-party advertising SDKs, analytics SDKs, or crash reporting SDKs in the app codebase reviewed for this release.
 - Konvertr stores certain preferences locally on your device so the app can remember how you like to use it.
-- If you tap the upgrade option in the free version, the app can open the Google Play page for Konvertr Pro in an external app.
+- If you tap the upgrade option in the free version, the app can open the Google Play or Apple App Store page for Konvertr Pro in an external app.
 
 ## Information We Collect
 
@@ -44,9 +44,9 @@ Based on the code reviewed for this release, the free version of Konvertr does n
 
 ## External Links and Upgrade Flow
 
-The free version includes an upgrade action that may open the Google Play listing for Konvertr Pro using an external application on your device. If you choose to tap that option, you may then be subject to Google Play's terms, privacy practices, and data handling for that external service.
+The free version includes an upgrade action that may open the Google Play or Apple App Store listing for Konvertr Pro using an external application on your device. If you choose to tap that option, you may then be subject to the applicable store's terms, privacy practices, and data handling for that external service.
 
-Konvertr does not control how Google Play or other external apps process data once you leave the app.
+Konvertr does not control how Google Play, Apple App Store, or other external apps process data once you leave the app.
 
 ## Data Retention
 
@@ -58,7 +58,7 @@ You can control local data stored by Konvertr by:
 
 - clearing the app's storage through your device settings;
 - uninstalling the app;
-- avoiding the external upgrade link if you do not want to open Google Play from within the app.
+- avoiding the external upgrade link if you do not want to open an app store from within the app.
 
 ## Children's Privacy
 

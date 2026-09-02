@@ -1,12 +1,12 @@
 # Privacy Policy for 5 Prayers
 
-Last updated: May 15, 2026
+Last updated: September 2, 2026
 
 Contact: mishmash.labs@gmail.com
 
 ## Overview
 
-5 Prayers is a prayer times app that helps users view daily prayer times, find the Qibla, set optional reminders, use home screen widgets, save locations, and export monthly prayer timetables. This Privacy Policy explains what information the app uses, why it uses that information, and what choices you have.
+5 Prayers is a prayer times app available on Android and iOS that helps users view daily prayer times, find the Qibla, set optional reminders, use home screen widgets, save locations, and export monthly prayer timetables. This Privacy Policy explains what information the app uses, why it uses that information, and what choices you have.
 
 This policy reflects the current release of the app.
 
@@ -54,7 +54,7 @@ Depending on your device settings, prayer reminder notifications may appear on y
 
 ### 6. Optional support purchases
 
-The app includes optional one-time support purchases through Google Play Billing. Payments are processed by Google Play, not by the app developer directly.
+The app includes optional one-time support purchases through Google Play Billing on Android and Apple's in-app purchase services on iOS. Payments are processed by the applicable store, not by the app developer directly.
 
 The app may store limited purchase state locally on your device, such as:
 
@@ -76,7 +76,7 @@ The app uses information to:
 - calculate and display Qibla direction
 - save your settings and saved locations
 - schedule and manage optional prayer reminders
-- display Android home screen widgets
+- display Android and iOS home screen widgets
 - generate and share monthly prayer timetable PDFs
 - process optional support purchases and prevent duplicate purchase handling
 - improve stability and basic operation during normal app use
@@ -86,7 +86,7 @@ The app uses information to:
 The app may rely on third-party or platform services only where needed to provide core features. Examples include:
 
 - device location services and platform geocoding services for location-based features
-- Google Play Billing for optional support purchases
+- Google Play Billing on Android and Apple's in-app purchase services on iOS for optional support purchases
 - apps or services you choose when opening or sharing exported PDFs
 
 As of the current release, the app is not designed to include third-party advertising SDKs, in-app ads, or dedicated analytics SDKs.
@@ -125,4 +125,4 @@ This Privacy Policy may be updated from time to time to reflect app changes, leg
 
 ## Contact
 
-For privacy questions or requests about 5 Prayers, use the developer support contact details listed on the Google Play store page for the app.
+For privacy questions or requests about 5 Prayers, use the developer support contact details listed on the Google Play or Apple App Store listing for the app.
