@@ -91,7 +91,7 @@
       ["Room to grow", "Need favorites, history, a calculator, and extra utility tools? Explore the separate Konvertr Pro app."]
     ],
     "steps": [["Pick a category", "Choose the type of measurement you need."], ["Enter your value", "Select the source and destination units."], ["Get your answer", "Use the result, with precision set the way you prefer."]],
-    "privacySummary": "Konvertr stores preferences locally and does not collect personal information for transmission to Mishmash Labs. The optional Pro upgrade link opens an external store, which has its own privacy practices.",
+    "privacySummary": "Konvertr stores preferences locally and does not collect personal information for transmission to Mishmash Labs. The optional Pro upgrade link opens an external store, which has its own privacy practices. App stores handle optional reviews.",
     "faqs": [
       ["Does it work offline?", "Yes. Core unit conversions use locally bundled conversion data and work without an internet connection."],
       ["What is the difference between Konvertr and Pro?", "Konvertr is the free, focused unit converter. Konvertr Pro is a separate paid app with a calculator, favorites, conversion and calculator history, themes, multi-view workflows, and 19 utility tools."],
@@ -125,7 +125,7 @@
       ["A flexible workspace", "Choose themes, preferences, and multi-view layouts that suit how you work."]
     ],
     "steps": [["Start with a conversion", "Choose your category and units, then enter a value."], ["Build your shortcuts", "Save favorites and revisit recent calculations."], ["Explore your toolkit", "Open a utility tool and adjust the workspace to your needs."]],
-    "privacySummary": "Settings, favorites, and history stay locally on your device. There are no advertising, analytics, or crash-reporting SDKs in the reviewed release. Optional compass and time-zone tools use limited device data locally.",
+    "privacySummary": "Settings, favorites, and history stay locally on your device. There are no advertising, analytics, or crash-reporting SDKs in the reviewed release. Optional compass and time-zone tools use limited device data locally. App stores handle optional reviews.",
     "faqs": [
       ["Is Konvertr Pro a separate app?", "Yes. It is a separate paid app, available through Google Play and the App Store. The store listing shows current pricing for your region."],
       ["Does Pro need an internet connection?", "The main app is designed to work offline. Conversion data, saved favorites, and histories are held on your device."],
@@ -158,7 +158,7 @@
       ["Useful details, close by", "Find maps, websites, social links, and seasonal tips. External links open services with their own privacy practices."]
     ],
     "steps": [["Find some inspiration", "Browse collections or search for a place."], ["Make it a plan", "Save favorites and arrange your itinerary."], ["Go explore", "Open a map, share your plan, and keep your visit history."]],
-    "privacySummary": "Favorites, itineraries, and visit history are stored locally, with no GPS permission. Google services handle ads, consent and font downloads. The app can fetch guide updates from GitHub Pages and Android app updates through Google Play.",
+    "privacySummary": "Favorites, itineraries, and visit history are stored locally, with no GPS permission. Google services handle ads, consent and font downloads. The app can fetch guide updates from GitHub Pages and Android app updates through Google Play. App stores handle optional reviews.",
     "faqs": [
       ["Do I need an account or GPS access?", "No. An account is not required, and Explore Lahore does not request runtime device-location permission. Map links open a third-party service."],
       ["Can I use the guide offline?", "Core place data ships with the app and your saved plans are local. Ads, font downloads, external websites, maps, and automatic guide-data refreshes need a connection."],

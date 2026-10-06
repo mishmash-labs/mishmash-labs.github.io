@@ -29,6 +29,7 @@ Konvertr stores limited app data locally on your device to support app functiona
 - app preferences such as decimal points, precision, sorting mode, visual layout preferences, and initial page state;
 - local usage-related settings such as category usage counts used to make the app experience more convenient;
 - locally bundled conversion data required for the converter to work offline.
+- the first-open time and a one-time in-app review request flag.
 
 This information is stored in local app storage. Your operating system or a backup service you enable may include app data in a device backup under that service's settings and privacy practices.
 
@@ -56,6 +57,14 @@ If you choose a copy action, the app writes the selected conversion result to th
 Android release builds may automatically check for and download available updates through Google Play's in-app update service. Google Play handles the technical and store-account information needed for that service. Conversion values and local preferences are not included in an update check.
 
 Relevant third-party notices include Google's Privacy Policy at https://policies.google.com/privacy and Apple's Privacy Policy at https://www.apple.com/legal/privacy/. Those providers may process information outside your country.
+
+## In-App Reviews
+
+After at least one week, Konvertr may request a native Google Play or Apple App
+Store review once. The first-open time and request flag are stored locally. The
+store handles reviews under its own privacy practices. Mishmash Labs does not
+receive store-account details or whether you submitted a rating through this
+request, and conversion inputs are not included in it.
 
 ## Data Retention
 

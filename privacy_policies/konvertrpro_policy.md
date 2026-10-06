@@ -31,6 +31,7 @@ Konvertr Pro stores limited app data locally on your device to provide core func
 - calculator history stored locally on your device;
 - converter history stored locally on your device;
 - tool-specific settings, for example preferred unit systems, tax settings, tip split settings, work-schedule settings, shoe size preferences, biological-sex and activity choices for the BMR tool, date options, and time zone selections.
+- the first-open time and a one-time in-app review request flag.
 
 Some tools let you enter potentially sensitive values, such as height, weight, age, salary or tax amounts. These values are processed on your device, not submitted to a developer-operated health or financial service. Saved history may also reveal the values you converted or calculated.
 
@@ -65,6 +66,14 @@ Konvertr Pro is distributed as a paid app where available. The relevant app stor
 Android release builds may automatically check for and download updates through Google Play's in-app update service. Google Play processes the technical and store information needed for that service; conversion history, calculator history and tool inputs are not included in an update check.
 
 Relevant third-party notices include Google's Privacy Policy at https://policies.google.com/privacy and Apple's Privacy Policy at https://www.apple.com/legal/privacy/. Those providers may process information outside your country.
+
+## In-App Reviews
+
+After at least one week, Konvertr Pro may request a native Google Play or Apple
+App Store review once. The first-open time and request flag are stored locally.
+The store handles reviews under its own privacy practices. Mishmash Labs does not
+receive store-account details or whether you submitted a rating through this
+request. Conversion values, calculator history and tool inputs are not included.
 
 ## Data Retention
 

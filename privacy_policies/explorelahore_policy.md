@@ -24,6 +24,7 @@ Explore Lahore stores the following information locally on your device to make a
 - Visited-place history, including saved visit dates
 - A cached copy of updated place data if a newer guide-data file is downloaded for your build
 - Ad-consent choices and cached fonts used by the app and its SDKs
+- The first-open time and a one-time in-app review request flag
 
 This information is stored in local app storage, including a local on-device database. We do not require you to create an account to use these features.
 
@@ -58,6 +59,15 @@ If you choose to share a place or an itinerary, the app passes the selected cont
 The app uses Google Fonts. If a required font is not already available locally, the font library may download it from Google's font-hosting services and cache it on your device. Those requests expose technical information such as your IP address to the receiving service; they do not include your saved places or itineraries.
 
 On Android, the app may check for and download available updates through Google Play's in-app update service. Google Play processes the technical and store information needed for that service under its own policies.
+
+### 6. In-app reviews
+
+After at least one week of use, the app may request a native Google Play or Apple
+App Store review once. The first-open time and request flag remain in local app
+storage. The relevant store handles the review under its own privacy practices;
+Mishmash Labs does not receive your store-account details or whether you submitted
+a rating through this request. Saved places, itineraries and visit history are
+not included in the request.
 
 ## Platform permissions and SDK configuration
 
