@@ -1,11 +1,11 @@
 # proFPL Privacy Policy
 
-Effective date: September 9, 2026
+Effective date: October 6, 2026
 
 proFPL is an independent companion app for Fantasy Premier League managers on
 Android and iOS. It helps users view gameweek information, manage squads and
 transfers, review fixtures, leagues, cups, and player information, schedule
-local reminders, and access optional proFPL Plus features. This Privacy Policy
+local reminders, and access optional proFPL+ features. This Privacy Policy
 explains what information is handled when you use proFPL, how it is used, when
 it may be shared, and what choices you have.
 
@@ -15,8 +15,9 @@ or associated with the Premier League or Fantasy Premier League.
 ## 1. Summary
 
 - proFPL does not create or operate your Fantasy Premier League account.
-- An existing Fantasy Premier League account is required for the primary app
-  experience.
+- You can view public FPL information using a Team ID or Explore without
+  supplying a password. FPL sign-in is required for private account information
+  and actions such as Pick Team and Transfers.
 - When you sign in, your credentials and authentication information are sent
   over encrypted HTTPS connections to Premier League account and Fantasy
   Premier League services so the app can access your account data.
@@ -28,10 +29,12 @@ or associated with the Premier League or Fantasy Premier League.
   flow permits ad requests.
 - Optional subscriptions and lifetime purchases are processed by Google Play or
   Apple, not directly by Mishmash Labs.
-- On iOS, proFPL uses Firebase Analytics to measure app installs, first opens,
-  app use, and Google Ads campaign performance. proFPL does not currently use
-  Firebase Crashlytics or send your Fantasy Premier League account identity to
-  Firebase Analytics.
+- RevenueCat manages purchase entitlements using an app-user identifier and
+  receives the active FPL entry ID as a customer attribute.
+- Supported home screen widgets store selected public team and gameweek
+  information locally and may refresh it from FPL services.
+- The current app does not include Firebase Analytics or a dedicated remote
+  crash-reporting SDK.
 - proFPL does not request access to your camera, microphone, contacts, or precise
   device location.
 
@@ -64,6 +67,14 @@ manager name, and team name using platform secure storage on your device. The
 selected-account and automatic-sign-in preferences are stored in app
 preferences.
 
+You can instead connect using a public Team ID without entering an email or
+password. Public mode loads the team name, manager name, points, history,
+leagues and other publicly accessible entry information from FPL. A saved
+public entry contains its identifier and public profile information, not
+sign-in credentials. Explore opens a sample public team for the current visit
+and does not save it as an account. Public viewing does not authorize private
+account actions.
+
 ### B. Information stored locally on your device
 
 proFPL stores app data locally so it can work efficiently and remember your
@@ -75,13 +86,21 @@ choices. This may include:
 - gameweek reminder settings, scheduled notification information, and timezone
   data
 - pending squad, lineup, chip, and transfer choices while you use the app
-- a local cache of proFPL Plus product and entitlement status
+- saved player wishlist entries and local review-prompt state
+- a local cache of proFPL+ product and entitlement status
 - consent and privacy-choice state made available by the advertising consent SDK
 
 Most local app data is not sent to a Mishmash Labs-operated server by the
 current app architecture. Data that is needed for account features is exchanged
 with Premier League services, and advertising and purchase information is
 handled as described below.
+
+Supported home screen widgets use local shared app storage for the selected
+entry ID, team name, points, rank, gameweek deadlines and update timestamps.
+That information may be visible to anyone who can see your home screen. Widget
+refreshes may request public FPL data in the background without sending saved
+passwords or private authentication tokens. You can remove widgets through
+your device's home screen controls.
 
 ### C. Public football and player information
 
@@ -96,7 +115,7 @@ Premier League services process information under their own terms and privacy
 notices. Your use of a Fantasy Premier League account remains governed by the
 terms and privacy information provided by the Premier League.
 
-### D. Advertising, analytics, and app-install measurement
+### D. Advertising
 
 The free version of proFPL may display ads using Google AdMob and the Google
 Mobile Ads SDK. Google User Messaging Platform may also present consent or
@@ -116,32 +135,19 @@ and measure ads, and to support fraud prevention, security, and legal
 compliance. Google and its partners process this information under their own
 terms and privacy policies.
 
-proFPL Plus is designed to suppress ads while a valid Plus entitlement is
+proFPL+ is designed to suppress ads while a valid Plus entitlement is
 active. Advertising consent controls may remain available where required.
-
-On iOS, proFPL also uses Firebase Analytics, provided by Google, to measure
-app installs and app use. Firebase Analytics may process information such as:
-
-- a Firebase app-instance identifier
-- app, device, operating-system, language, version, and other technical
-  information
-- automatically collected events such as first open, sessions, and app
-  engagement
-- IP address and approximate location derived from it
-
-proFPL does not send your Fantasy Premier League email address, password, entry
-identifier, saved-account identifier, or RevenueCat App User ID to Firebase
-Analytics. Firebase Analytics data may be linked to Google Ads to measure iOS
-app-install campaigns and report campaign performance. Google may use
-privacy-preserving, aggregated, modeled, or Apple SKAdNetwork-based reporting
-where user-level attribution is unavailable.
 
 On iOS, proFPL requests App Tracking Transparency authorization. If you allow
 tracking, applicable advertising services may use the device advertising
 identifier for measurement or personalization. If you deny or later revoke
-authorization, IDFA-based measurement and personalization are limited. Denying
-ATT does not necessarily stop Firebase Analytics or privacy-preserving campaign
-measurement that is permitted by law and the relevant platform policies.
+authorization, IDFA-based measurement and personalization are limited.
+
+Declining ATT does not remove ads or stop all advertising-related processing.
+Eligible ads and privacy-preserving attribution may continue without IDFA
+under the applicable Google consent signals. Google's consent SDK determines
+whether a regional privacy message is required; ad requests may be permitted
+without a prompt where no configured message is required.
 
 ### E. Purchase and subscription information
 
@@ -166,6 +172,21 @@ RevenueCat, which validates eligible store transactions and returns the
 authoritative entitlement status. RevenueCat uses the store credentials
 configured by Mishmash Labs in its service, but those credentials and
 payment-card details are not stored in the app.
+
+RevenueCat is configured on supported mobile platforms at app startup, not
+only after a purchase. It may receive an app-user identifier, store transaction
+and entitlement information, device and app information, and technical network
+information such as an IP address. The app also sends the active FPL entry ID
+as the `fpl_entry_id` customer attribute, including when a public Team ID is
+selected. This links that public entry to the RevenueCat customer record used
+for purchase management; switching FPL accounts does not create a separate
+purchase entitlement. The app does not send your FPL password or reusable FPL
+session tokens to RevenueCat.
+
+Mishmash Labs can access customer and purchase-management information made
+available through its RevenueCat account for entitlement support. RevenueCat
+and the stores retain their records according to their own policies and legal
+obligations; clearing local app data does not delete those records.
 
 Google and Apple retain transaction records according to their own legal and
 business requirements.
@@ -194,6 +215,10 @@ operating-system share interface. The destination app or person you choose may
 then receive that image under their own privacy practices. proFPL does not
 select the recipient for you.
 
+Optional in-app review requests are handled by the relevant app store. A shared
+squad image may reveal your team name, lineup or other information shown in
+the image, so review it before choosing a recipient.
+
 ### H. Support communications
 
 If you contact Mishmash Labs for support or a privacy request, we may receive
@@ -211,6 +236,7 @@ proFPL uses information to:
 
 - authenticate with your existing Fantasy Premier League account at your
   request
+- display public team data when you use a Team ID or Explore
 - load and display your squad, points, transfers, fixtures, leagues, cups,
   rankings, and related football information
 - submit squad, lineup, chip, captain, and transfer actions you choose to make
@@ -218,10 +244,9 @@ proFPL uses information to:
 - cache information for faster loading and limited offline display
 - remember themes, preferences, and settings
 - schedule and manage local gameweek reminders
+- update supported home screen widgets with public team and deadline information
 - show ads in the free version and honor available privacy choices
-- measure app installs, first opens, app use, and aggregate campaign
-  performance through Firebase Analytics
-- start, validate, restore, and maintain proFPL Plus purchases
+- start, validate, restore, and maintain proFPL+ purchases
 - check for app updates
 - prevent abuse, protect purchases, diagnose failures, and keep the app secure
 - respond to support and privacy requests
@@ -245,8 +270,6 @@ provide features you use:
 - Google AdMob, Google Mobile Ads, User Messaging Platform, and advertising
   partners, for consent flows, ad delivery, measurement, fraud prevention, and
   compliance
-- Firebase Analytics and Google Ads, for iOS app analytics, app-install campaign
-  measurement, attribution, and reporting
 - Google Play, for Android app distribution, updates, billing, purchase
   verification, and restoration
 - Apple App Store and StoreKit, for iOS app distribution, version checks,
@@ -278,14 +301,11 @@ services.
 - Support communications are retained only as long as reasonably needed to
   respond, maintain records, resolve disputes, enforce agreements, and meet
   legal obligations.
-- Purchase-validation records, if processed by Mishmash Labs, are retained only
-  as long as reasonably necessary to maintain entitlements, prevent fraud,
-  resolve support issues, and comply with financial or legal obligations.
-- Advertising, Premier League, Google Play, and Apple retention periods are
+- RevenueCat customer attributes and purchase records are retained under its
+  policies and the applicable purchase-support and legal requirements. Removing
+  a saved FPL account does not delete the RevenueCat customer record.
+- Advertising, Premier League, RevenueCat, Google Play, and Apple retention periods are
   determined by those providers.
-- Firebase Analytics and Google Ads retain analytics, attribution, and campaign
-  reporting records according to their own settings, policies, and legal
-  obligations.
 
 Removing proFPL data does not delete your Fantasy Premier League account or
 store purchase history. Those are controlled by the Premier League, Google, or
@@ -296,6 +316,7 @@ Apple respectively.
 You can choose to:
 
 - decline to save an FPL account and disable automatic sign-in
+- use a public Team ID or Explore instead of supplying FPL credentials
 - remove saved accounts from the Accounts section in Settings
 - log out of the current FPL session
 - clear app data through your device settings or uninstall the app, subject to
@@ -310,6 +331,7 @@ You can choose to:
 - purchase Plus, restore an eligible purchase, or manage a subscription through
   the relevant storefront
 - choose whether and where to share a generated squad image
+- remove home screen widgets if you do not want public team information displayed
 
 Depending on where you live, you may also have legal rights to request access,
 correction, deletion, restriction, objection, portability, or withdrawal of
@@ -318,11 +340,16 @@ to a data-protection authority. Use the contact method in Section 12 to make a
 request. We may need information to verify your identity and determine which
 service controls the requested data.
 
-For information held by your Fantasy Premier League account, Google Analytics,
-Google Ads, AdMob, Google account, Apple account, Google Play, or the App Store,
-submit your request directly to the relevant provider. Mishmash Labs cannot
-delete an account, analytics record, advertising record, or transaction record
-controlled by those providers.
+For information held by your Fantasy Premier League account, AdMob, Google
+account, Apple account, Google Play, or the App Store, submit your request
+directly to the relevant provider. Mishmash Labs cannot delete an account,
+advertising record, or transaction record controlled by those providers.
+
+For a request about the RevenueCat customer record associated with proFPL,
+contact Mishmash Labs. We may need your RevenueCat app-user identifier or
+non-sensitive transaction details to locate the correct record. A deletion
+request does not cancel an active store subscription; manage cancellation
+through the relevant store. Never send an FPL password or session token.
 
 ## 7. Children
 
@@ -352,6 +379,7 @@ credentials.
 ## 9. International Processing
 
 Third-party providers used by proFPL, including Premier League, Google, Apple,
+RevenueCat,
 advertising partners, storefront services, and infrastructure providers, may
 process information on servers located in countries other than your own. Those
 countries may have different data-protection laws. Providers are responsible
@@ -376,9 +404,6 @@ terms, including:
 - Premier League and Fantasy Premier League account, data, image, and football
   services
 - Google AdMob, Google Mobile Ads, and User Messaging Platform
-- Firebase Analytics / Google Analytics for Firebase, for iOS app analytics and
-  app-install measurement
-- Google Ads, for iOS app-install campaign delivery, attribution, and reporting
 - Google Play services, Google Play Billing, and Google Play in-app updates
 - Apple App Store, StoreKit, and Apple's public storefront lookup service
 - RevenueCat, for purchase validation and entitlement management
@@ -401,9 +426,9 @@ they process information on their systems:
 
 ## 12. Contact
 
-For privacy questions or requests about proFPL, use the Mishmash Labs developer
-support contact details shown on the Google Play or Apple App Store listing for
-proFPL.
+For privacy questions or requests about proFPL, contact Mishmash Labs at
+mishmash.labs@gmail.com. Support messages and attachments are handled as
+described in Section 2.H.
 
 When contacting support about privacy, identify proFPL and describe your request
 without including your FPL password, authentication token, or payment-card

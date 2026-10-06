@@ -21,6 +21,22 @@ Open [index.html](index.html) directly in a browser, or serve the repository wit
 - Keep legal content in the existing [privacy_policies](privacy_policies) Markdown files. The build renders them without changing their terms. The policy renderer supports the syntax currently used by these files: headings, paragraphs, flat unordered lists with continuation lines, bold text, inline code, and HTTP(S) links. Unsupported block syntax fails the build.
 - Run `npm run build` after editing app content, templates, or policy sources. Commit the generated HTML, sitemap, and robots file with the source changes. `npm run check` verifies generated files are current.
 
+### Privacy-policy updates
+
+Keep each website policy source identical to the corresponding policy in the app repository. Konvertr and Konvertr Pro share a repository but have separate policies:
+
+| Website source in `privacy_policies` | App-repository source |
+| --- | --- |
+| `autofolio_policy.md` | `autofolio/docs/privacy-policy.md` |
+| `5prayers_policy.md` | `five-prayers/docs/privacy_policy.md` |
+| `konvertr_policy.md` | `konvertr/docs/privacy-policy-free.md` |
+| `konvertrpro_policy.md` | `konvertr/docs/privacy-policy-pro.md` |
+| `explorelahore_policy.md` | `explore_lahore/docs/PRIVACY_POLICY.md` |
+| `wordsleuth_policy.md` | `word_sleuth/docs/privacy_policy.md` |
+| `profpl_policy.md` | `profpl/docs/privacy_policy.md` |
+
+Verify disclosures against the current app implementation, update the revision date, and synchronize both copies. Also update related privacy summaries and FAQs in [assets/apps.json](assets/apps.json) when practices change. Run the build, tests and generated-file check so the collective [privacy directory](privacy/index.html), individual policy pages and downloadable Markdown copies remain consistent. App repositories are not needed to build this website.
+
 The visual app previews are labeled illustrative layouts, not screenshots. Store listings are the source of current availability, pricing, and product details.
 
 ## Deployment and existing resources

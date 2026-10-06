@@ -24,7 +24,7 @@
       ["Your garage, backed up", "Create local backups with attached photos and documents. Pro adds PDF reports and vehicle passports. Backups are not encrypted, so protect files you save or share."]
     ],
     "steps": [["Set up your garage", "Add your vehicle, preferred units, and currency."], ["Make your first entry", "Log a refuel, charge, service, or trip."], ["See the bigger picture", "Review running costs and set your next reminder."]],
-    "privacySummary": "Vehicle records stay on your device during ordinary use. There are no ads, behavioral analytics, or location tracking. Store purchases and files you choose to share are handled by the services you select.",
+    "privacySummary": "Vehicle records and supported imports are processed on your device. There are no ads, behavioral analytics, or location tracking. Backups are not encrypted. Stores handle purchases, reviews and Android updates; files you share are handled by the recipients you choose.",
     "faqs": [
       ["What is included for free?", "Free mode includes two vehicles, including inactive ones, and five lifetime saved receipt scans. The optional lifetime Pro purchase adds unlimited vehicles and receipt scans, PDF reports, vehicle passports, and alternative themes."],
       ["Does Autofolio sync across devices?", "Automatic cross-device sync is not available. Core tracking works offline, and you can create and restore local backups. Backup files are not encrypted."],
@@ -158,10 +158,10 @@
       ["Useful details, close by", "Find maps, websites, social links, and seasonal tips. External links open services with their own privacy practices."]
     ],
     "steps": [["Find some inspiration", "Browse collections or search for a place."], ["Make it a plan", "Save favorites and arrange your itinerary."], ["Go explore", "Open a map, share your plan, and keep your visit history."]],
-    "privacySummary": "Favorites, itineraries, and visit history are stored locally. The app does not request GPS permission. Google Mobile Ads and consent services handle advertising data; supported builds may fetch updated guide content.",
+    "privacySummary": "Favorites, itineraries, and visit history are stored locally, with no GPS permission. Google services handle ads, consent and font downloads. The app can fetch guide updates from GitHub Pages and Android app updates through Google Play.",
     "faqs": [
       ["Do I need an account or GPS access?", "No. An account is not required, and Explore Lahore does not request runtime device-location permission. Map links open a third-party service."],
-      ["Can I use the guide offline?", "Core place data ships with the app and your saved plans are local. Ads, external websites, maps, and optional guide-data refreshes need a connection."],
+      ["Can I use the guide offline?", "Core place data ships with the app and your saved plans are local. Ads, font downloads, external websites, maps, and automatic guide-data refreshes need a connection."],
       ["Are there ads?", "Yes. The app uses Google Mobile Ads in selected areas and Google's consent flow where required. Available privacy choices can be reviewed in the app."],
       ["Can I share my itinerary?", "Yes. The app passes your selected itinerary to the system share sheet, where you choose the receiving app or person."]
     ]
@@ -192,12 +192,12 @@
       ["A little extra with Pro", "The optional Pro upgrade removes ads and adds benefits including saved hints, challenge swaps, and cabinet customization."]
     ],
     "steps": [["Choose a puzzle mode", "Start with the kind of word challenge you enjoy."], ["Work the clues", "Connect, decode, or rearrange your way to an answer."], ["Keep your streak going", "Return to saved progress and explore another mode."]],
-    "privacySummary": "Gameplay progress and preferences are saved locally, with no account required. The free version uses Google AdMob, and the iOS version uses Firebase Analytics for app and campaign measurement. Purchases are handled by the relevant store.",
+    "privacySummary": "Gameplay progress and preferences are saved locally, with no account required. The free version uses Google AdMob. Backups are shared only at your request and are not encrypted. Fonts and store services may make network requests; there is no dedicated Firebase Analytics integration.",
     "faqs": [
       ["Which puzzle modes are included?", "Word Bridge, Logic Deduction, Letter Lattice, Fragment Forge, Cipher Lock, Category Matrix, Lexical Extraction, and String Resolution."],
       ["Is my progress saved?", "Yes. Puzzle progress, statistics, achievements, and preferences are stored on your device. Clearing app data or uninstalling may remove that local progress, subject to platform backup behavior."],
       ["What does Pro add?", "Pro removes ads and unlocks additional benefits, including saved hints, challenge swaps, and cabinet customization. The app shows the current purchase details."],
-      ["Does the app use analytics?", "The current iOS version uses Firebase Analytics to measure app usage and campaign installs. The free version also uses Google advertising services. The privacy policy explains these services and your choices."]
+      ["Does the app use analytics?", "The current app does not include Firebase Analytics or a dedicated remote crash-reporting SDK. Google advertising services may still process ad measurement and diagnostic information. The privacy policy explains these services and your choices."]
     ]
   },
   {
@@ -216,7 +216,7 @@
     "googlePlay": "https://play.google.com/store/apps/details?id=com.mishmash.profpl",
     "appStore": "https://apps.apple.com/pk/app/profpl-fantasy-football/id6807618981",
     "highlights": ["Live gameweek points", "Squad & transfers", "Deadline reminders"],
-    "facts": [["Account", "Existing FPL account"], ["Connection", "Internet required"], ["Platforms", "Android + iOS"], ["Upgrade", "Optional Plus"]],
+    "facts": [["Access", "FPL login or Team ID"], ["Connection", "Internet required"], ["Platforms", "Android + iOS"], ["Upgrade", "Optional Plus"]],
     "features": [
       ["Follow your gameweek", "Track live points and dashboard information as your Fantasy Premier League gameweek unfolds."],
       ["Your squad, your decisions", "Manage lineup, bench, captain, and chip choices with your connected FPL account."],
@@ -225,10 +225,10 @@
       ["Keep up with the competition", "Browse leagues, cups, standings, and related team information."],
       ["Don't miss the deadline", "Set optional local gameweek reminders and choose your preferred light, dark, and color themes."]
     ],
-    "steps": [["Connect your FPL account", "Sign in with your existing Fantasy Premier League account."], ["Review your gameweek", "Check your squad, points, players, and upcoming fixtures."], ["Make your next move", "Plan transfers and set a reminder ahead of the deadline."]],
-    "privacySummary": "Sign-in information is sent over HTTPS to Premier League services. Saved credentials use platform secure storage. The free version may show Google ads; iOS uses Firebase Analytics. Store purchases are validated through RevenueCat.",
+    "steps": [["Choose how to connect", "Sign in to FPL, view a public Team ID, or try Explore."], ["Review your gameweek", "Check your squad, points, players, and upcoming fixtures."], ["Make your next move", "Sign in for account actions and set a reminder ahead of the deadline."]],
+    "privacySummary": "FPL sign-in connects directly to Premier League services; public Team ID viewing needs no password. Saved credentials use secure storage. Google handles ads and consent. RevenueCat manages purchases and receives the active FPL entry ID. Widgets use public team data; there is no Firebase Analytics integration.",
     "faqs": [
-      ["Do I need a Fantasy Premier League account?", "Yes. An existing Fantasy Premier League account and an internet connection are required for the primary app experience. proFPL does not create or operate your FPL account."],
+      ["Do I need to sign in to Fantasy Premier League?", "You can view public information using a Team ID or Explore without entering a password. Sign in with an existing FPL account for private information, Pick Team and Transfers. An internet connection is needed; proFPL does not create or operate your FPL account."],
       ["Is this an official Premier League app?", "No. proFPL is an independent companion and is not affiliated with, endorsed by, or associated with the Premier League or Fantasy Premier League."],
       ["What is proFPL Plus?", "Plus is an optional upgrade with monthly and yearly subscriptions and a lifetime purchase option. A valid Plus entitlement suppresses ads. Available features and localized prices are shown in the app."],
       ["How are saved accounts handled?", "If you choose to save an account, credentials and reusable session information use your device's platform secure storage. You can remove saved accounts in Settings. Never send passwords or authentication tokens in a support message."]

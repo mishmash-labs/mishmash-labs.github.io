@@ -90,6 +90,16 @@ test('rendered policies preserve every word of the original legal content', () =
   }
 });
 
+test('every policy publishes a revision date and a direct privacy contact', () => {
+  for (const app of apps) {
+    const markdown = fs.readFileSync(path.join(root, 'privacy_policies', app.policy), 'utf8');
+    assert.match(markdown.replace(/\*\*/g, ''), /^(?:Effective date|Last updated): [A-Z][a-z]+ \d{1,2}, \d{4}[ \t]*\r?$/m, app.name);
+    assert.ok(markdown.includes('mishmash.labs@gmail.com'), app.name);
+    const policy = files.get(path.join('privacy', app.slug, 'index.html'));
+    assert.ok(policy.includes('mishmash.labs@gmail.com'), app.name);
+  }
+});
+
 test('policy renderer handles wrapped lists, hard breaks, links, and safe inline markup', () => {
   const { html } = renderPolicy('# Policy\n\n## Section\n\nFirst  \nsecond.\n\n- **Store:** a wrapped\n  item with `code` and <https://example.com/privacy>\n- [Another provider](https://example.com/terms?a=1&b=2)\n\n<script>alert("x")</script>');
   assert.match(html, /First<br>second\./);
