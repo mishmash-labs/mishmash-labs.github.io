@@ -92,8 +92,8 @@ function appImage(app, base, size = 64, eager = false) {
   return `<img class="app-icon" src="${base}assets/${app.icon}" alt="${escape(app.name)} app icon" width="${size}" height="${size}"${eager ? '' : ' loading="lazy"'}>`;
 }
 
-function storeLinks(app) {
-  return `<div class="store-links">${externalLink(app.googlePlay, `${icon('play')}<span><small>Get it on</small>Google Play</span>`, 'store-button')}${app.appStore ? externalLink(app.appStore, `<span class="apple-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12.5c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.8C7.3 7.8 5 9.7 5 13c0 2 1.1 4.2 2.1 5.6.6.9 1.3 1.8 2.3 1.8s1.4-.6 2.7-.6 1.7.6 2.8.6 1.7-.9 2.3-1.8c.7-1 1-1.7 1.5-2.8-1.5-.7-1.7-2.2-1.7-3.3ZM14.4 6.5c.5-.7 1-1.6.9-2.5-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.5.9.1 1.8-.5 2.4-1.2Z"/></svg></span><span><small>Download on the</small>App Store</span>`, 'store-button') : ''}</div>`;
+function storeLinks(app, className = '') {
+  return `<div class="store-links${className ? ` ${className}` : ''}">${externalLink(app.googlePlay, `${icon('play')}<span><small>Get it on</small>Google Play</span>`, 'store-button')}${app.appStore ? externalLink(app.appStore, `<span class="apple-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12.5c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.8C7.3 7.8 5 9.7 5 13c0 2 1.1 4.2 2.1 5.6.6.9 1.3 1.8 2.3 1.8s1.4-.6 2.7-.6 1.7.6 2.8.6 1.7-.9 2.3-1.8c.7-1 1-1.7 1.5-2.8-1.5-.7-1.7-2.2-1.7-3.3ZM14.4 6.5c.5-.7 1-1.6.9-2.5-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.5.9.1 1.8-.5 2.4-1.2Z"/></svg></span><span><small>Download on the</small>App Store</span>`, 'store-button') : ''}</div>`;
 }
 
 function preview(app, base) {
@@ -133,7 +133,7 @@ function homepage() {
         <p class="eyebrow"><span class="status-dot"></span> Independent minds. Useful little apps.</p>
         <h1 id="hero-title">Good little apps.<br>For your<br><span class="highlight lavender">everyday.${icon('star')}</span></h1>
         <p class="hero-description">A mishmash of ideas, made into things you'll actually use. Thoughtful mobile apps for life's little routines, big passions, and everything in between.</p>
-        <div class="hero-actions"><a class="button button-dark" href="#apps">Find your next app ${icon('arrow')}</a><a class="text-link" href="#about">Meet the studio ${icon('external')}</a></div>
+        ${storeLinks({ googlePlay, appStore }, 'hero-actions')}
         <div class="hero-footnote"><span class="tiny-shapes" aria-hidden="true"><i></i><i></i><i></i></span> Small, independent, and made with care.</div>
       </div>
       <div class="hero-art" aria-label="A mix of Mishmash Labs apps">
@@ -148,7 +148,6 @@ function homepage() {
       <div class="section-heading"><div><p class="eyebrow">The app collection</p><h2 id="apps-title">Different interests.<br>Same attention to detail.</h2></div><p>From your morning routine to your next gameweek, there's a little something for everyone.</p></div>
       <div class="catalog-toolbar"><div class="app-filters" role="group" aria-label="Filter apps by category" hidden>${['All apps', 'Everyday tools', 'Lifestyle', 'Games & sport'].map((category, i) => `<button type="button" data-filter="${i === 0 ? 'all' : escape(category)}" aria-pressed="${i === 0}">${escape(category)}</button>`).join('')}</div><p id="filter-status" role="status" aria-live="polite">7 apps to explore</p></div>
       <div class="app-grid">${apps.map((app, i) => appCard(app, '', i === 0)).join('')}</div>
-      <div class="catalog-stores"><span>Find the collection on your favorite store.</span><div>${externalLink(googlePlay, 'Google Play', 'text-link')}${externalLink(appStore, 'App Store', 'text-link')}</div></div>
     </section>
     <section class="studio-section section-space" id="about" aria-labelledby="studio-title">
       <div class="container studio-layout">

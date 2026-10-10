@@ -55,6 +55,22 @@ test('every generated page has metadata, a single h1, and accessible landmarks',
   }
 });
 
+test('homepage replaces the hero actions with both developer store buttons', () => {
+  const home = files.get('index.html');
+  const hero = home.match(/<section class="hero container"[^>]*>[\s\S]*?<\/section>/);
+  assert.ok(hero);
+  const actions = hero[0].match(/<div class="store-links hero-actions">[\s\S]*?<\/div>/);
+  assert.ok(actions);
+  const links = [...actions[0].matchAll(/<a class="store-button" href="([^"]+)" target="_blank" rel="noopener noreferrer">/g)];
+  assert.deepEqual(links.map((link) => decode(link[1])), [
+    'https://play.google.com/store/apps/dev?id=5114658008790714296',
+    'https://apps.apple.com/pk/developer/fawad-khan/id1542221013'
+  ]);
+  assert.match(actions[0], /Google Play<\/span>/);
+  assert.match(actions[0], /App Store<\/span>/);
+  assert.doesNotMatch(home, /Find your next app|Meet the studio|catalog-stores|store-spotlight/);
+});
+
 test('every page links to Instagram in the shared footer alongside existing socials', () => {
   for (const [name, html] of pages) {
     const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/);
