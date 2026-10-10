@@ -19,7 +19,7 @@ Open [index.html](index.html) directly in a browser, or serve the repository wit
 - Edit app descriptions, features, FAQs, platforms, and store links in [assets/apps.json](assets/apps.json).
 - Edit layouts in [scripts/build.js](scripts/build.js), shared styles in [assets/site.css](assets/site.css), and interactions in [assets/site.js](assets/site.js).
 - The homepage hero highlights the studio's Google Play and App Store developer links with large buttons in place of "Find your next app" and "Meet the studio." Update these developer URLs in [scripts/build.js](scripts/build.js); individual app store URLs remain in [assets/apps.json](assets/apps.json).
-- The shared footer in [scripts/build.js](scripts/build.js) links to the studio's Instagram, GitHub, and LinkedIn profiles on every page.
+- The shared footer in [scripts/build.js](scripts/build.js) links to the studio's Instagram, Threads, GitHub, and LinkedIn profiles on every page.
 - Keep legal content in the existing [privacy_policies](privacy_policies) Markdown files. The build renders them without changing their terms. The policy renderer supports the syntax currently used by these files: headings, paragraphs, flat unordered lists with continuation lines, bold text, inline code, and HTTP(S) links. Unsupported block syntax fails the build.
 - Run `npm run build` after editing app content, templates, or policy sources. Commit the generated HTML, sitemap, and robots file with the source changes. `npm run check` verifies generated files are current.
 

@@ -71,11 +71,12 @@ test('homepage replaces the hero actions with both developer store buttons', () 
   assert.doesNotMatch(home, /Find your next app|Meet the studio|catalog-stores|store-spotlight/);
 });
 
-test('every page links to Instagram in the shared footer alongside existing socials', () => {
+test('every page links to Instagram and Threads in the shared footer alongside existing socials', () => {
   for (const [name, html] of pages) {
     const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/);
     assert.ok(footer, name);
     assert.match(footer[0], /<a class="" href="https:\/\/www\.instagram\.com\/mishmash\.labs\/" target="_blank" rel="noopener noreferrer">Instagram<svg/, name);
+    assert.match(footer[0], /<a class="" href="https:\/\/www\.threads\.com\/@mishmash\.labs" target="_blank" rel="noopener noreferrer">Threads<svg/, name);
     assert.ok(footer[0].includes('https://github.com/mishmash-labs'), name);
     assert.ok(footer[0].includes('https://www.linkedin.com/in/fawadakhan93/'), name);
   }
