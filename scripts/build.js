@@ -53,7 +53,7 @@ function footer(base) {
       <div class="footer-top">
         <div><a class="brand" href="${base}index.html"><img src="${base}assets/brand-mark.svg" alt="" width="32" height="32"><span>mishmash<span class="brand-labs">labs</span></span></a><p>A little mix. A lot of purpose.</p></div>
         <nav aria-label="Footer"><a href="${base}index.html#apps">Our apps</a><a href="${base}index.html#about">The studio</a><a href="${base}privacy/index.html">Privacy policies</a><a href="mailto:${email}">Contact</a></nav>
-        <div class="footer-social">${externalLink('https://github.com/mishmash-labs', 'GitHub')}${externalLink('https://www.linkedin.com/in/fawadakhan93/', 'LinkedIn')}</div>
+        <div class="footer-social">${externalLink('https://www.instagram.com/mishmash.labs/', 'Instagram')}${externalLink('https://github.com/mishmash-labs', 'GitHub')}${externalLink('https://www.linkedin.com/in/fawadakhan93/', 'LinkedIn')}</div>
       </div>
       <div class="footer-bottom"><span>&copy; 2026 Mishmash Labs. Built by Fawad Khan.</span><span>Independent by design. Made in Pakistan.</span></div>
     </div>

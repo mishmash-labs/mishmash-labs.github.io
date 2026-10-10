@@ -55,6 +55,16 @@ test('every generated page has metadata, a single h1, and accessible landmarks',
   }
 });
 
+test('every page links to Instagram in the shared footer alongside existing socials', () => {
+  for (const [name, html] of pages) {
+    const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/);
+    assert.ok(footer, name);
+    assert.match(footer[0], /<a class="" href="https:\/\/www\.instagram\.com\/mishmash\.labs\/" target="_blank" rel="noopener noreferrer">Instagram<svg/, name);
+    assert.ok(footer[0].includes('https://github.com/mishmash-labs'), name);
+    assert.ok(footer[0].includes('https://www.linkedin.com/in/fawadakhan93/'), name);
+  }
+});
+
 test('all local links, fragments, scripts, and images resolve, including file previews', () => {
   for (const [name, html] of pages) {
     for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
