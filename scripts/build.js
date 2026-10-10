@@ -4,7 +4,6 @@ const apps = require('../assets/apps.json');
 
 const root = path.resolve(__dirname, '..');
 const origin = 'https://mishmash-labs.github.io';
-const pageviewCounter = `https://hits.sh/${new URL(origin).hostname}`;
 const email = 'mishmash.labs@gmail.com';
 const googlePlay = 'https://play.google.com/store/apps/dev?id=5114658008790714296';
 const appStore = 'https://apps.apple.com/pk/developer/fawad-khan/id1542221013';
@@ -52,7 +51,7 @@ function footer(base) {
   return `<footer class="site-footer">
     <div class="container">
       <div class="footer-top">
-        <div><a class="brand" href="${base}index.html"><img src="${base}assets/brand-mark.svg" alt="" width="32" height="32"><span>mishmash<span class="brand-labs">labs</span></span></a><p>A little mix. A lot of purpose.</p>${externalLink(`${pageviewCounter}/`, `<span id="pageview-counter" data-counter-origin="${origin}" data-counter-src="${escape(`${pageviewCounter}.svg?label=Page%20views&color=29342e&labelColor=626b63`)}">View page-view stats</span>`, 'text-link footer-pageviews')}</div>
+        <div><a class="brand" href="${base}index.html"><img src="${base}assets/brand-mark.svg" alt="" width="32" height="32"><span>mishmash<span class="brand-labs">labs</span></span></a><p>A little mix. A lot of purpose.</p></div>
         <nav aria-label="Footer"><a href="${base}index.html#apps">Our apps</a><a href="${base}index.html#about">The studio</a><a href="${base}privacy/index.html">Privacy policies</a><a href="${base}privacy/index.html#website-privacy">Website privacy</a><a href="mailto:${email}">Contact</a></nav>
         <div class="footer-social">${externalLink('https://www.instagram.com/mishmash.labs/', 'Instagram')}${externalLink('https://github.com/mishmash-labs', 'GitHub')}${externalLink('https://www.linkedin.com/in/fawadakhan93/', 'LinkedIn')}</div>
       </div>
@@ -261,11 +260,9 @@ function privacyIndex() {
   const base = '../';
   const content = `<main id="main" class="container privacy-index"><header class="policy-header"><p class="eyebrow">Clear by design</p><h1>Your apps.<br>Your information<span class="heading-dot mint">.</span></h1><p>Every app works a little differently. Find the full privacy policy for yours, with the details on local storage, permissions, third-party services, and your choices.</p></header><div class="privacy-grid">${apps.map((app) => `<a class="policy-card ${app.color}" href="${app.slug}/index.html">${appImage(app, base, 56)}<span><strong>${escape(app.name)}</strong><span>Read privacy policy</span></span>${icon('arrow')}</a>`).join('')}</div><div class="privacy-index-note">${icon('shield')}<p>Each policy describes that app's data practices and shows its latest revision date. These pages match the Markdown policies maintained with the individual apps; downloadable copies are linked from each policy page. Have a question? <a href="mailto:${email}">Contact Mishmash Labs.</a></p></div>
     <section id="website-privacy" class="policy-prose" aria-labelledby="website-privacy-title">
-      <h2 id="website-privacy-title">Website privacy &amp; page views</h2>
+      <h2 id="website-privacy-title">Website privacy</h2>
       <p>Last updated: October 10, 2026. This notice applies to this website, not to the mobile apps.</p>
-      <p>On the live website, we load a small counter image from <a href="https://hits.sh/">hits.sh</a> to count total page views across our pages. This integration does not set cookies or create visitor identifiers. It measures page views, not unique people: repeat page loads count again. Local previews and visits with JavaScript disabled are not counted.</p>
-      <p>The image request goes to hits.sh, which receives the usual connection information, including your IP address. We do not send the page path, query string, or referrer with the counter request. See the <a href="https://hits.sh/privacy/">hits.sh privacy policy</a> for how the service handles requests.</p>
-      <p>The <a href="${pageviewCounter}/">total and daily page-view statistics</a> are public. Opening the dashboard visits the hits.sh website, which uses Google Analytics under its own privacy policy; the counter image itself does not load analytics scripts. Counts start when the counter is deployed; they do not recover past traffic. Blocked requests, caching, bots, and artificial requests can affect the totals, so they are approximate rather than an audited visitor count.</p>
+      <p>This website does not include visitor counters, analytics, advertising, or tracking scripts. Our site code does not set cookies or create visitor identifiers. JavaScript is used only to enhance mobile navigation and app filtering.</p>
       <p>GitHub Pages hosts this website, and fonts load from Google Fonts. These providers receive connection information when serving their resources. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a> and <a href="https://policies.google.com/privacy">Google's privacy policy</a>. Questions? <a href="mailto:${email}">Contact Mishmash Labs.</a></p>
     </section></main>`;
   return documentPage({ title: 'App Privacy Policies — Mishmash Labs', description: 'Find the privacy policies for all seven Mishmash Labs apps, including Autofolio, 5 Prayers, Konvertr, Word Sleuth, and proFPL.', base, route: '/privacy/', content, current: 'privacy' });

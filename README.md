@@ -44,18 +44,10 @@ The visual app previews are labeled illustrative layouts, not screenshots. Store
 
 GitHub Pages serves the committed static files directly; no deployment build or framework is required. The build produces [sitemap.xml](sitemap.xml) and [robots.txt](robots.txt) for the canonical `https://mishmash-labs.github.io` origin.
 
-Existing Markdown policy URLs, `app-ads.txt`, Google verification, and the [Explore Lahore guide-data feed](explore_lahore) are preserved. DM Sans loads from Google Fonts with system-font fallbacks. The website includes the page-view counter described below, but no advertising or third-party JavaScript analytics scripts. Individual mobile apps have their own data practices described in their policies.
+Existing Markdown policy URLs, `app-ads.txt`, Google verification, and the [Explore Lahore guide-data feed](explore_lahore) are preserved. DM Sans loads from Google Fonts with system-font fallbacks. The website does not include visitor counters, analytics, advertising, or tracking scripts. Individual mobile apps have their own data practices described in their policies.
 
-## Page-view tracking (no signup)
+## Website privacy
 
-The site uses [hits.sh](https://hits.sh/) to store a shared total across all 16 content pages. No account, API key, backend, or npm dependency is required.
+Visitor tracking is currently disabled; this site does not collect page-view or unique-visitor totals. [assets/site.js](assets/site.js) only enhances mobile navigation and app filtering.
 
-- **View the count and daily history:** open [the public site statistics](https://hits.sh/mishmash-labs.github.io/), or use the counter link in any page's footer.
-- **Activation:** deploy the generated files to GitHub Pages as usual. Counting starts with live page loads after deployment; past traffic cannot be recovered.
-- **What is counted:** page views, **not unique visitors**. Repeat page loads count again. The counter is approximate: blocked requests, caching, bots, and artificial requests can affect it. Stats are public, and there is no private dashboard or authenticated protection against inflated counts.
-- **Local previews:** [assets/site.js](assets/site.js) only loads the badge when the current origin matches the live origin supplied by [scripts/build.js](scripts/build.js). Local files, localhost, and other preview origins do not increment it. With JavaScript disabled, the footer still links to stats but the visit is not counted.
-- **Privacy and reliability:** only an image is requested from hits.sh; no third-party script is loaded. The integration does not set cookies or create visitor identifiers, and it suppresses the request's referrer so page paths and query strings are not sent. hits.sh still receives normal connection information. The [website privacy notice](privacy/index.html#website-privacy) documents this separately from the unchanged app policies. If the badge fails to load, the footer shows an unavailable message and still links to the dashboard; site navigation and content remain usable.
-
-The hits.sh dashboard is a separate website and uses Google Analytics under [its own privacy policy](https://hits.sh/privacy/). Those scripts are not embedded in this site.
-
-The origin and shared counter URLs are defined in [scripts/build.js](scripts/build.js). Changing the domain changes the counter namespace and starts a separate total. Keep the badge out of documentation and local previews to avoid counting non-site views. Run the build, tests, and generated-file check after changes.
+The [website privacy notice](privacy/index.html#website-privacy), linked from every page's footer, documents the site's hosting and font providers separately from the unchanged app policies. GitHub Pages and Google Fonts receive connection information when serving their resources; the site code does not set cookies or create visitor identifiers.

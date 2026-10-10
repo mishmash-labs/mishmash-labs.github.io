@@ -179,7 +179,6 @@ p { color: var(--muted); }
 .site-footer { border-top: 1px solid var(--line); padding-top: 40px; }
 .footer-top { display: flex; justify-content: space-between; gap: 50px; padding-bottom: 38px; }
 .footer-top > div:first-child > p { font-size: 11px; margin-top: 14px; }
-.footer-pageviews { margin-top: 14px; font-size: 11px; }
 .footer-top .brand > span { font-size: 21px; }
 .footer-top nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 55px; font-size: 12px; }
 .footer-top nav a:hover { text-decoration: underline; text-underline-offset: 4px; }

@@ -51,19 +51,4 @@
     });
   }
 
-  const counter = document.querySelector('#pageview-counter');
-
-  if (counter && window.location.origin === counter.dataset.counterOrigin) {
-    const image = document.createElement('img');
-    image.alt = 'Total page views (not unique visitors)';
-    image.height = 20;
-    image.referrerPolicy = 'no-referrer';
-    counter.textContent = 'Page views: loading...';
-    image.addEventListener('load', () => counter.replaceChildren(image), { once: true });
-    image.addEventListener('error', () => {
-      counter.textContent = 'Page-view count unavailable';
-      console.warn('The hits.sh page-view counter could not be loaded.');
-    }, { once: true });
-    image.src = counter.dataset.counterSrc;
-  }
 })();

@@ -2,7 +2,6 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const apps = require('../assets/apps.json');
 const { generateSite, renderPolicy } = require('../scripts/build.js');
 
@@ -66,92 +65,18 @@ test('every page links to Instagram in the shared footer alongside existing soci
   }
 });
 
-test('every page shares one site-wide counter and links to the website privacy notice', () => {
+test('every page links to website privacy and no visitor counter remains', () => {
   for (const [name, html] of pages) {
-    assert.equal((html.match(/id="pageview-counter"/g) || []).length, 1, name);
-    assert.match(html, /data-counter-origin="https:\/\/mishmash-labs\.github\.io"/, name);
-    assert.match(html, /data-counter-src="https:\/\/hits\.sh\/mishmash-labs\.github\.io\.svg\?label=Page%20views&amp;color=29342e&amp;labelColor=626b63"/, name);
-    assert.match(html, /href="https:\/\/hits\.sh\/mishmash-labs\.github\.io\/" target="_blank" rel="noopener noreferrer"/, name);
     assert.match(html, /href="[^"]*privacy\/index\.html#website-privacy">Website privacy<\/a>/, name);
-    assert.ok(!/<img\b[^>]*src="https:\/\/hits\.sh\//.test(html), name);
-    assert.ok(!/<script\b[^>]*src="https:\/\/hits\.sh\//.test(html), name);
+    assert.doesNotMatch(html, /hits\.sh|busuanzi|pageview-counter|data-counter-|footer-pageviews/, name);
   }
   const privacy = files.get(path.join('privacy', 'index.html'));
   assert.match(privacy, /id="website-privacy"/);
-  assert.match(privacy, /page views, not unique people/);
-  assert.match(privacy, /statistics<\/a> are public/);
-  assert.match(privacy, /href="https:\/\/hits\.sh\/privacy\/"/);
-});
-
-function runPageviewCounter(origin, withCounter = true) {
-  const images = [];
-  const warnings = [];
-  const counter = {
-    dataset: {
-      counterOrigin: 'https://mishmash-labs.github.io',
-      counterSrc: 'https://hits.sh/mishmash-labs.github.io.svg?label=Page%20views&color=29342e&labelColor=626b63'
-    },
-    textContent: 'View page-view stats',
-    replaceChildren(...children) { this.children = children; }
-  };
-  const document = {
-    querySelector: (selector) => selector === '#pageview-counter' && withCounter ? counter : null,
-    querySelectorAll: () => [],
-    createElement(tag) {
-      assert.equal(tag, 'img');
-      const image = {
-        listeners: {},
-        addEventListener(event, listener, options) {
-          assert.equal(options.once, true);
-          this.listeners[event] = listener;
-        }
-      };
-      images.push(image);
-      return image;
-    }
-  };
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'assets', 'site.js'), 'utf8'), {
-    document,
-    window: { location: { origin } },
-    console: { warn: (message) => warnings.push(message) }
-  });
-  return { counter, images, warnings };
-}
-
-test('the live site requests one counter image without a referrer and displays it on success', () => {
-  const { counter, images, warnings } = runPageviewCounter('https://mishmash-labs.github.io');
-  assert.equal(images.length, 1);
-  const [image] = images;
-  assert.equal(image.src, counter.dataset.counterSrc);
-  assert.equal(image.referrerPolicy, 'no-referrer');
-  assert.equal(image.alt, 'Total page views (not unique visitors)');
-  assert.equal(image.height, 20);
-  assert.equal(counter.textContent, 'Page views: loading...');
-  image.listeners.load();
-  assert.deepEqual(counter.children, [image]);
-  assert.deepEqual(warnings, []);
-});
-
-test('local files, development servers, and other origins never request a counter image', () => {
-  for (const origin of [
-    'null', 'http://localhost:4173', 'http://127.0.0.1:4173',
-    'http://mishmash-labs.github.io', 'https://mishmash-labs.github.io:4173',
-    'https://example.com', 'https://mishmash-labs.github.io.example.com'
-  ]) {
-    const { counter, images, warnings } = runPageviewCounter(origin);
-    assert.equal(images.length, 0, origin);
-    assert.equal(counter.textContent, 'View page-view stats', origin);
-    assert.deepEqual(warnings, [], origin);
-  }
-  assert.equal(runPageviewCounter('https://mishmash-labs.github.io', false).images.length, 0);
-});
-
-test('counter failures show an honest unavailable message and log a warning', () => {
-  const { counter, images, warnings } = runPageviewCounter('https://mishmash-labs.github.io');
-  images[0].listeners.error();
-  assert.equal(counter.textContent, 'Page-view count unavailable');
-  assert.equal(counter.children, undefined);
-  assert.deepEqual(warnings, ['The hits.sh page-view counter could not be loaded.']);
+  assert.match(privacy, /does not include visitor counters, analytics, advertising, or tracking scripts/);
+  assert.match(privacy, /GitHub Pages hosts this website/);
+  assert.match(privacy, /fonts load from Google Fonts/);
+  const script = fs.readFileSync(path.join(root, 'assets', 'site.js'), 'utf8');
+  assert.doesNotMatch(script, /hits\.sh|busuanzi|pageview-counter|counterSrc|createElement|fetch\(/);
 });
 
 test('all local links, fragments, scripts, and images resolve, including file previews', () => {
