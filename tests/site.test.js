@@ -71,14 +71,27 @@ test('homepage replaces the hero actions with both developer store buttons', () 
   assert.doesNotMatch(home, /Find your next app|Meet the studio|catalog-stores|store-spotlight/);
 });
 
-test('every page links to Instagram and Threads in the shared footer alongside existing socials', () => {
+test('every page has accessible icon-only social links in the shared footer', () => {
+  const expected = [
+    ['https://www.instagram.com/mishmash.labs/', 'Instagram'],
+    ['https://www.threads.com/@mishmash.labs', 'Threads'],
+    ['https://github.com/mishmash-labs', 'GitHub'],
+    ['https://www.linkedin.com/in/fawadakhan93/', 'LinkedIn']
+  ];
   for (const [name, html] of pages) {
     const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/);
     assert.ok(footer, name);
-    assert.match(footer[0], /<a class="" href="https:\/\/www\.instagram\.com\/mishmash\.labs\/" target="_blank" rel="noopener noreferrer">Instagram<svg/, name);
-    assert.match(footer[0], /<a class="" href="https:\/\/www\.threads\.com\/@mishmash\.labs" target="_blank" rel="noopener noreferrer">Threads<svg/, name);
-    assert.ok(footer[0].includes('https://github.com/mishmash-labs'), name);
-    assert.ok(footer[0].includes('https://www.linkedin.com/in/fawadakhan93/'), name);
+    const socials = footer[0].match(/<div class="footer-social">([\s\S]*?)<\/div>/);
+    assert.ok(socials, name);
+    const links = [...socials[1].matchAll(/<a href="([^"]+)" target="_blank" rel="noopener noreferrer" aria-label="([^"]+)" title="([^"]+)">([\s\S]*?)<\/a>/g)];
+    assert.deepEqual(links.map((link) => [link[1], link[2]]), expected, name);
+    assert.equal((socials[1].match(/<a\b/g) || []).length, expected.length, name);
+    for (const [, , label, title, content] of links) {
+      assert.equal(title, label, name);
+      assert.match(content, /^<svg\b[^>]*aria-hidden="true">[\s\S]+<\/svg>$/, name);
+      assert.equal((content.match(/<svg\b/g) || []).length, 1, name);
+      assert.equal(content.replace(/<[^>]*>/g, ''), '', name);
+    }
   }
 });
 

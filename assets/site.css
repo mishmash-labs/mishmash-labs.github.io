@@ -178,9 +178,10 @@ p { color: var(--muted); }
 .footer-top .brand > span { font-size: 21px; }
 .footer-top nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 55px; font-size: 12px; }
 .footer-top nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.footer-social { display: flex; flex-direction: column; gap: 12px; font-size: 12px; }
-.footer-social a { display: flex; justify-content: space-between; gap: 22px; }
-.footer-social .icon { width: 15px; height: 15px; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start; }
+.footer-social a { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--line); border-radius: 10px; transition: background 180ms ease, border-color 180ms ease; }
+.footer-social a:hover, .footer-social a:focus-visible { background: var(--lavender); border-color: var(--ink); }
+.footer-social .icon { width: 20px; height: 20px; }
 .footer-bottom { border-top: 1px solid var(--line); padding-block: 20px; display: flex; justify-content: space-between; gap: 20px; font-size: 9px; color: var(--muted); }
 
 .breadcrumb { display: flex; align-items: center; gap: 14px; padding-top: 32px; font-size: 11px; color: var(--muted); }
@@ -514,7 +515,6 @@ p { color: var(--muted); }
   .footer-top { flex-wrap: wrap; gap: 30px; }
   .footer-top > div:first-child { width: 100%; }
   .footer-top nav { flex: 1; gap: 12px 30px; }
-  .footer-social { min-width: 80px; }
   .footer-bottom { flex-direction: column; gap: 5px; font-size: 9px; }
   .app-hero { grid-template-columns: 1fr; gap: 32px; padding-block: 35px 40px; }
   .app-identity { margin-bottom: 25px; }
