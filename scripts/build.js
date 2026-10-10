@@ -63,7 +63,7 @@ function footer(base) {
         <nav aria-label="Footer"><a href="${base}index.html#apps">Our apps</a><a href="${base}index.html#about">The studio</a><a href="${base}privacy/index.html">Privacy policies</a><a href="${base}privacy/index.html#website-privacy">Website privacy</a><a href="mailto:${email}">Contact</a></nav>
         <div class="footer-social">${socialLink('https://www.instagram.com/mishmash.labs/', 'Instagram')}${socialLink('https://www.threads.com/@mishmash.labs', 'Threads')}${socialLink('https://github.com/mishmash-labs', 'GitHub')}${socialLink('https://www.linkedin.com/in/fawadakhan93/', 'LinkedIn')}</div>
       </div>
-      <div class="footer-bottom"><span>&copy; 2026 Mishmash Labs. Built by Fawad Khan.</span><span>Independent by design. Made in Pakistan.</span></div>
+      <div class="footer-bottom"><span>&copy; 2026 Mishmash Labs. Built by Fawad Khan.</span><span>Independent by design.</span></div>
     </div>
   </footer>`;
 }
@@ -160,7 +160,7 @@ function homepage() {
     <section class="studio-section section-space" id="about" aria-labelledby="studio-title">
       <div class="container studio-layout">
         <div class="studio-art lavender" aria-hidden="true"><span class="studio-circle mint"></span><span class="studio-square peach"></span><span class="studio-arch blue"></span><span class="studio-word">A curious<br>little studio.</span>${icon('star', 'studio-star')}<span class="studio-caption">MANY IDEAS. ONE MAKER.</span></div>
-        <div class="studio-copy"><p class="eyebrow">Hello from the studio</p><h2 id="studio-title">Not a big company.<br>Just big on the details.</h2><p>I'm Fawad Khan, a Senior Flutter Developer based in Pakistan and the person behind Mishmash Labs.</p><p>I turn a wonderfully mixed bag of interests into focused mobile apps. The goal isn't to make another app for everything. It's to make the right little app for something that matters.</p><div class="maker-signature"><span class="maker-avatar">FK</span><div><strong>Fawad Khan</strong><span>Developer, designer, curious human.</span></div>${externalLink('https://www.linkedin.com/in/fawadakhan93/', 'Meet Fawad', 'text-link')}</div></div>
+        <div class="studio-copy"><p class="eyebrow">Hello from the studio</p><h2 id="studio-title">Not a big company.<br>Just big on the details.</h2><p>I'm Fawad Khan, a Senior Flutter Developer and the person behind Mishmash Labs.</p><p>I turn a wonderfully mixed bag of interests into focused mobile apps. The goal isn't to make another app for everything. It's to make the right little app for something that matters.</p><div class="maker-signature"><span class="maker-avatar">FK</span><div><strong>Fawad Khan</strong><span>Developer, designer, curious human.</span></div>${externalLink('https://www.linkedin.com/in/fawadakhan93/', 'Meet Fawad', 'text-link')}</div></div>
       </div>
       <div class="container values-grid"><div><span class="value-icon peach">${icon('check')}</span><h3>Useful by nature</h3><p>Focused tools that solve real problems, without turning the small things into big chores.</p></div><div><span class="value-icon mint">${icon('shield')}</span><h3>Clear about data</h3><p>Honest, app-specific privacy policies. Know what's stored, what's shared, and what you control.</p></div><div><span class="value-icon lavender">${icon('star')}</span><h3>Made with care</h3><p>Thoughtful details, considered interfaces, and a little personality in every app.</p></div></div>
     </section>

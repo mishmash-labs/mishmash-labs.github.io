@@ -95,6 +95,13 @@ test('every page has accessible icon-only social links in the shared footer', ()
   }
 });
 
+test('studio biography and every shared footer omit the maker location', () => {
+  assert.match(files.get('index.html'), /<p>I'm Fawad Khan, a Senior Flutter Developer and the person behind Mishmash Labs\.<\/p>/);
+  for (const [name, html] of pages) {
+    assert.match(html, /<span>Independent by design\.<\/span>/, name);
+  }
+});
+
 test('every page links to website privacy and no visitor counter remains', () => {
   for (const [name, html] of pages) {
     assert.match(html, /href="[^"]*privacy\/index\.html#website-privacy">Website privacy<\/a>/, name);
