@@ -75,6 +75,7 @@ test('every page has accessible icon-only social links in the shared footer', ()
   const expected = [
     ['https://www.instagram.com/mishmash.labs/', 'Instagram'],
     ['https://www.threads.com/@mishmash.labs', 'Threads'],
+    ['https://x.com/mishmashlabs1', 'X'],
     ['https://github.com/mishmash-labs', 'GitHub'],
     ['https://www.linkedin.com/in/fawadakhan93/', 'LinkedIn']
   ];
