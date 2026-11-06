@@ -94,6 +94,17 @@ test('homepage replaces the hero actions with both developer store buttons', () 
   assert.doesNotMatch(home, /Find your next app|Meet the studio|catalog-stores|store-spotlight/);
 });
 
+test('homepage app mosaic does not repeat apps', () => {
+  const home = files.get('index.html');
+  const mosaic = home.match(/<div class="app-mosaic">([\s\S]*?)<\/div>/);
+  assert.ok(mosaic);
+  const appLinks = [...mosaic[1].matchAll(/href="apps\/([^/]+)\/index\.html"/g)];
+  const slugs = appLinks.map(([, slug]) => slug);
+  assert.equal(slugs.length, 5);
+  assert.equal(new Set(slugs).size, slugs.length);
+  assert.equal(slugs.filter((slug) => slug === 'ascendant-path').length, 1);
+});
+
 test('every page has accessible icon-only social links in the shared footer', () => {
   const expected = [
     ['https://www.instagram.com/mishmash.labs/', 'Instagram'],

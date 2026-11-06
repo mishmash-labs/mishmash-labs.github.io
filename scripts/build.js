@@ -159,7 +159,7 @@ function appCard(app, base, featured = false) {
 }
 
 function homepage() {
-  const heroApps = [apps[1], apps[2], apps[5], apps.find((app) => app.slug === 'ascendant-path'), apps[6]];
+  const heroApps = [apps[1], apps[2], apps[5], apps.find((app) => app.slug === 'ascendant-path'), apps[7]];
   const content = `<main id="main">
     <section class="hero container" id="home" aria-labelledby="hero-title">
       <div class="hero-copy">
