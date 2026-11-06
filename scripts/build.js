@@ -69,13 +69,31 @@ function footer(base) {
   </footer>`;
 }
 
-function documentPage({ title, description, base, route, content, current, image = 'assets/brand-mark.svg' }) {
+function appThemeAttributes(app) {
+  if (!app) return { attributes: '', color: '#faf9f6' };
+  if (!/^[a-z0-9-]+$/.test(app.slug)) throw new Error(`Invalid app theme slug: ${app.slug}`);
+  const properties = ['paper', 'white', 'ink', 'muted', 'line', 'accent', 'accent-soft', 'accent-alt', 'accent-ink'];
+  const declarations = properties.map((property) => {
+    const value = app.theme?.[property];
+    if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) {
+      throw new Error(`Invalid ${property} color for ${app.name}`);
+    }
+    return `--${property}: ${value};`;
+  }).join('');
+  return {
+    attributes: ` data-app-theme="${escape(app.slug)}" style="${declarations}"`,
+    color: app.theme.paper
+  };
+}
+
+function documentPage({ title, description, base, route, content, current, image = 'assets/brand-mark.svg', appTheme }) {
+  const theme = appThemeAttributes(appTheme);
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
+  <meta name="theme-color" content="${theme.color}">
   <title>${escape(title)}</title>
   <meta name="description" content="${escape(description)}">
   <link rel="canonical" href="${origin}${route}">
@@ -88,7 +106,7 @@ function documentPage({ title, description, base, route, content, current, image
   <link rel="stylesheet" href="${base}assets/site.css">
   <script src="${base}assets/site.js" defer></script>
 </head>
-<body>
+<body${theme.attributes}>
 ${header(base, current)}
 ${content}
 ${footer(base)}
@@ -180,7 +198,7 @@ function appPage(app) {
   const base = '../../';
   const related = app.related ? apps.find((candidate) => candidate.slug === app.related) : undefined;
   const more = related ? [related, apps.find((candidate) => candidate.category !== app.category)] : apps.filter((candidate) => candidate.slug !== app.slug).slice(0, 2);
-  const content = `<main id="main">
+  const content = `<main id="main" class="app-page">
     <div class="container breadcrumb"><a href="${base}index.html#apps">${icon('back')} All apps</a><span>/</span><span>${escape(app.name)}</span></div>
     <section class="container app-hero" aria-labelledby="app-title">
       <div class="app-hero-copy"><div class="app-identity">${appImage(app, base, 72, true)}<div><p class="eyebrow">${escape(app.category)}</p><h1 id="app-title">${escape(app.name)}</h1><p>${escape(app.subtitle)}</p></div></div>
@@ -194,7 +212,7 @@ function appPage(app) {
     <section class="container section-space download-section"><div class="download-panel ${app.color}">${appImage(app, base, 80)}<div><p class="eyebrow">A little more ${app.slug === 'word-sleuth' || app.slug === 'profpl' || app.slug === 'ascendant-path' ? 'play' : 'possibility'} in your pocket</p><h2>Make room for ${escape(app.name)}.</h2><p>${escape(app.pricing)}${app.comingSoon ? '.' : '. See the store for current availability and pricing.'}</p>${storeLinks(app)}</div></div>${app.disclaimer ? `<p class="disclaimer">${escape(app.disclaimer)}</p>` : ''}</section>
     <section class="container section-space more-apps"><div class="section-heading"><div><p class="eyebrow">Keep exploring</p><h2>More from the mishmash.</h2></div><a class="text-link" href="${base}index.html#apps">See all apps ${icon('arrow')}</a></div><div class="related-grid">${more.map((candidate) => appCard(candidate, base)).join('')}</div></section>
   </main>`;
-  return documentPage({ title: `${app.name}: ${app.subtitle} — Mishmash Labs`, description: app.summary, base, route: `/apps/${app.slug}/`, content, current: 'apps', image: `assets/${app.icon}` });
+  return documentPage({ title: `${app.name}: ${app.subtitle} — Mishmash Labs`, description: app.summary, base, route: `/apps/${app.slug}/`, content, current: 'apps', image: `assets/${app.icon}`, appTheme: app });
 }
 
 // The policy sources use headings, paragraphs, flat lists, strong text, code, and links.

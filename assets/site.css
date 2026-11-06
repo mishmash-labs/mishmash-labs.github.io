@@ -654,3 +654,132 @@ p { color: var(--muted); }
   .policy-prose { max-width: none; }
   .policy-prose h2, .policy-prose h3 { break-after: avoid; }
 }
+
+body[data-app-theme] {
+  background:
+    radial-gradient(ellipse at 88% 4%, var(--accent-soft), transparent 34rem),
+    var(--paper);
+}
+body[data-app-theme] ::selection { background: var(--accent); color: var(--accent-ink); }
+body[data-app-theme] :focus-visible { outline-color: var(--accent); }
+body[data-app-theme] .site-header { background: var(--paper); }
+body[data-app-theme] .app-page .app-hero { position: relative; isolation: isolate; }
+body[data-app-theme] .app-page .app-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 8px 0;
+  border-radius: 32px;
+  background: radial-gradient(ellipse at 82% 40%, var(--accent-soft), transparent 72%);
+  pointer-events: none;
+}
+body[data-app-theme] .app-identity .app-icon {
+  box-shadow: 0 0 0 1px var(--line), 0 12px 30px #0006;
+}
+body[data-app-theme] .app-identity .eyebrow,
+body[data-app-theme] .app-highlights .icon,
+body[data-app-theme] .privacy-hero-link > .icon:first-child { color: var(--accent); }
+body[data-app-theme] .app-highlights > span {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+}
+body[data-app-theme] .app-page .lavender,
+body[data-app-theme] .app-page .mint,
+body[data-app-theme] .app-page .peach,
+body[data-app-theme] .app-page .blue,
+body[data-app-theme] .app-page .yellow,
+body[data-app-theme] .app-page .pink { background-color: var(--accent-soft); }
+body[data-app-theme] .app-page .button-dark,
+body[data-app-theme] .app-page .store-button {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+body[data-app-theme] .app-page .button-dark:hover,
+body[data-app-theme] .app-page .store-button:hover {
+  background: var(--accent-alt);
+  color: var(--ink);
+}
+body[data-app-theme] .app-page .store-coming-soon:hover { background: var(--accent); }
+body[data-app-theme] .app-page .product-visual {
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+  box-shadow: 0 24px 70px #0003;
+}
+body[data-app-theme] .app-page .preview-board {
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+body[data-app-theme] .app-page .mini-badge,
+body[data-app-theme] .app-page .conversion-box {
+  background: var(--paper);
+  border-color: var(--line);
+}
+body[data-app-theme] .app-page .conversion-box.result {
+  background: var(--accent-soft);
+  border-color: var(--line);
+}
+body[data-app-theme] .app-page .vehicle-art svg path:first-child { fill: var(--accent); }
+body[data-app-theme] .app-page .vehicle-art svg path:nth-child(2) { fill: var(--accent-alt); }
+body[data-app-theme] .app-page .vehicle-art svg path:nth-child(3) { stroke: var(--accent-ink); }
+body[data-app-theme] .app-page .vehicle-art svg circle:nth-of-type(odd) { fill: var(--paper); }
+body[data-app-theme] .app-page .vehicle-art svg circle:nth-of-type(even) { fill: var(--accent); }
+body[data-app-theme] .app-page .prayer-arch { background: var(--accent-soft); border-color: var(--accent-alt); }
+body[data-app-theme] .app-page .prayer-sun { background: var(--accent); border-color: var(--accent-alt); }
+body[data-app-theme] .app-page .city-visual > span {
+  background: var(--accent);
+  border-color: var(--accent-soft);
+}
+body[data-app-theme] .app-page .city-visual > span:nth-child(even) { background: var(--accent-alt); }
+body[data-app-theme] .app-page .itinerary-row b {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+body[data-app-theme] .app-page .word-grid > span {
+  background: var(--accent-soft);
+  border-color: var(--line);
+}
+body[data-app-theme] .app-page .word-grid .solved {
+  background: var(--accent-alt);
+  border-color: var(--accent);
+}
+body[data-app-theme] .app-page .pitch {
+  background: var(--accent-soft);
+  border-color: var(--accent-alt);
+}
+body[data-app-theme] .app-page .pitch::before,
+body[data-app-theme] .app-page .pitch::after { border-color: var(--accent-alt); }
+body[data-app-theme] .app-page .shirt { color: var(--accent); }
+body[data-app-theme] .app-page .app-facts,
+body[data-app-theme] .app-page .app-facts > div,
+body[data-app-theme] .app-page .faq-section details,
+body[data-app-theme] .app-page .faq-section details:first-of-type { border-color: var(--line); }
+body[data-app-theme] .app-page .feature-number {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+body[data-app-theme] .app-page .getting-started {
+  background: var(--white);
+  border-color: var(--line);
+}
+body[data-app-theme] .app-page .step-number {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+body[data-app-theme] .app-page .privacy-callout .value-icon {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+body[data-app-theme] .app-page .download-panel {
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 1px #ffffff08;
+}
+body[data-app-theme] .footer-social a:hover,
+body[data-app-theme] .footer-social a:focus-visible {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+@media print {
+  body[data-app-theme] { background: white; color: black; }
+}

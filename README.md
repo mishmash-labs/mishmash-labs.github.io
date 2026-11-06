@@ -16,7 +16,7 @@ Open [index.html](index.html) directly in a browser, or serve the repository wit
 
 ## Update the site
 
-- Edit app descriptions, features, FAQs, platforms, and store links in [assets/apps.json](assets/apps.json).
+- Edit app descriptions, features, FAQs, platforms, store links, and individual product-page palettes in [assets/apps.json](assets/apps.json). App-page palettes are scoped to product pages; the homepage and privacy directory keep the studio theme.
 - Edit layouts in [scripts/build.js](scripts/build.js), shared styles in [assets/site.css](assets/site.css), and interactions in [assets/site.js](assets/site.js).
 - The homepage hero highlights the studio's Google Play and App Store developer links with large buttons in place of "Find your next app" and "Meet the studio." Update these developer URLs in [scripts/build.js](scripts/build.js); individual app store URLs remain in [assets/apps.json](assets/apps.json).
 - The shared footer in [scripts/build.js](scripts/build.js) uses icon-only links to the studio's Instagram, Threads, X, GitHub, and LinkedIn profiles on every page, with screen-reader labels, hover titles, and 44px tap targets. Brand SVGs are inlined from [Simple Icons](https://github.com/simple-icons/simple-icons) under [CC0](https://creativecommons.org/publicdomain/zero/1.0/); no external image requests are needed.

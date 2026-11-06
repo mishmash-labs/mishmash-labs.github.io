@@ -41,6 +41,21 @@ test('all apps have a complete static product page and privacy page', () => {
   }
 });
 
+test('product pages use distinct app themes while the homepage and privacy pages stay studio-themed', () => {
+  const themeColors = new Set();
+  for (const app of apps) {
+    const product = files.get(path.join('apps', app.slug, 'index.html'));
+    const policy = files.get(path.join('privacy', app.slug, 'index.html'));
+    themeColors.add(app.theme.paper);
+    assert.match(product, new RegExp(`<body data-app-theme="${app.slug}" style="[^"]*--accent: ${app.theme.accent};`), app.name);
+    assert.match(product, new RegExp(`<meta name="theme-color" content="${app.theme.paper}">`), app.name);
+    assert.match(product, /<main id="main" class="app-page">/, app.name);
+    assert.doesNotMatch(policy, /data-app-theme=/, app.name);
+  }
+  assert.equal(themeColors.size, apps.length);
+  assert.doesNotMatch(files.get('index.html'), /data-app-theme=|--accent:/);
+});
+
 test('every generated page has metadata, a single h1, and accessible landmarks', () => {
   for (const [name, html] of pages) {
     assert.match(html, /<html lang="en">/, name);
