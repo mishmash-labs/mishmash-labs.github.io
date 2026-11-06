@@ -302,12 +302,12 @@
       ["Return to your journey", "Earn up to one hour of offline progress when your journey is running. Save locally, copy a backup, or import a journey."]
     ],
     "steps": [["Begin at the bottom", "Start your first life and let every unlocked path work together."], ["Shape your journey", "Build skills, find work, and decide how to invest your earnings."], ["Rise again", "Choose when to rebirth and carry a lasting legacy into the next life."]],
-    "privacySummary": "Your journey is saved locally, with no game account required. The free game uses Google Mobile Ads, RevenueCat for optional purchases, and Google for online time checks; these providers may process device or service information. Backups are not encrypted.",
+    "privacySummary": "Your journey is saved locally, with no game account required. Google Mobile Ads may process ad, device, interaction, and diagnostic data; RevenueCat processes purchase history for purchases and analytics; Google receives online time-check requests. Backups are not encrypted.",
     "faqs": [
       ["Is Ascendant Path available yet?", "Not yet. The game is planned for Android and iOS, and store links will appear here when it is available."],
       ["How does progress work?", "Every unlocked job and skill advances automatically at the same time. Rebirth resets current progress while remembered levels help you grow faster."],
       ["Can I play offline?", "Core play works offline. Online time checks help verify time away, and ads and purchase features need an internet connection."],
-      ["What information does the game use?", "Your journey is stored on your device. Advertising, purchase services, online time checks, and support messages can involve information being sent to third parties. Read the full privacy policy for details."]
+      ["What information does the game use?", "Your journey is stored on your device. The game may send advertising, purchase, or online time-check information to the related services. If you contact support, we receive your email and message, and email providers may process them. Read the full privacy policy for details."]
     ],
     "disclaimer": "Ascendant Path is an independent game and is not affiliated with any referenced games, their creators, or publishers."
   },

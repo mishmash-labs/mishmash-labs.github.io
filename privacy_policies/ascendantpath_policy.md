@@ -52,23 +52,19 @@ send it to us, such as with a support request.
 ## 2. Advertising
 
 The free game uses **Google AdMob / Google Mobile Ads** for banner ads and
-optional rewarded ads. An ad request can send information to Google and the
-advertising services involved in serving or measuring that ad.
+optional rewarded ads. Google says its Mobile Ads SDK automatically collects
+and shares information when it serves ads. This can include:
 
-Depending on the platform, permissions, ad configuration, and applicable
-consent choices, this can include:
+- IP address, which can be used to infer approximate location.
+- Advertising IDs, app-set IDs, and other device- or account-related IDs.
+- App and ad interactions, such as app launches, taps, and video views.
+- App and SDK diagnostics, such as launch time, hangs, and energy use.
 
-- IP address and approximate location inferred from it.
-- Advertising identifiers and other app- or device-related identifiers.
-- Device, operating-system, and application information.
-- Ad impressions, taps, video views, and other ad or app interactions.
-- Crash, performance, and other diagnostic information.
-
-This information can be used to serve and measure ads, analyze advertising
-performance, maintain service quality, and detect fraud or abuse. Where
-permitted and enabled, it may also be used for personalized advertising or
-cross-app advertising measurement. Non-personalized or limited ads can still
-involve data processing.
+Google says this information is used for advertising, analytics, and fraud
+prevention. Identifier availability and ad personalization depend on platform
+settings, SDK configuration, and applicable consent choices. Non-personalized
+or limited ads can still involve data processing. Google documents its data
+handling in its [Google Mobile Ads Play data disclosure](https://developers.google.com/admob/android/privacy/play-data-disclosure).
 
 The game does not request access to your contacts, camera, microphone, or
 precise GPS location for gameplay.
@@ -94,6 +90,8 @@ receive your full payment-card details.
 The game uses **RevenueCat** to check purchases, grant access, and restore
 ownership. When configured, this service may be contacted even if you have not
 bought anything, so the game can check whether you already own the favor.
+RevenueCat processes purchase history for purchase functionality and analytics.
+Purchase-history processing is required for the purchase service to work.
 
 Purchase processing can include an automatically generated anonymous app-user
 identifier, receipt or purchase-token information, transaction and product
@@ -114,6 +112,8 @@ store account. Cross-store Android/iOS purchase sharing is not promised.
 Provider information:
 
 - RevenueCat: https://www.revenuecat.com/privacy/
+- RevenueCat Google Play data safety guidance:
+  https://www.revenuecat.com/docs/platform-resources/google-platform-resources/google-plays-data-safety
 - Apple: https://www.apple.com/legal/privacy/
 - Google: https://policies.google.com/privacy
 
