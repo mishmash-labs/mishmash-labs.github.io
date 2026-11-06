@@ -1,6 +1,6 @@
 # Mishmash Labs
 
-A responsive, static app-studio website with a warm, flat pastel design. Includes the homepage, seven dedicated app pages, a privacy-policy directory, and seven readable policy pages.
+A responsive, static app-studio website with a warm, flat pastel design. Includes the homepage, eight dedicated app pages, a privacy-policy directory, and eight readable policy pages.
 
 ## Develop and preview
 
@@ -36,6 +36,7 @@ Keep each website policy source identical to the corresponding policy in the app
 | `konvertrpro_policy.md` | `konvertr/docs/privacy-policy-pro.md` |
 | `explorelahore_policy.md` | `explore_lahore/docs/PRIVACY_POLICY.md` |
 | `wordsleuth_policy.md` | `word_sleuth/docs/privacy_policy.md` |
+| `ascendantpath_policy.md` | `ascendantpath/docs/PRIVACY_POLICY.md` |
 | `profpl_policy.md` | `profpl/docs/privacy_policy.md` |
 
 Verify disclosures against the current app implementation, update the revision date, and synchronize both copies. Also update related privacy summaries and FAQs in [assets/apps.json](assets/apps.json) when practices change. Run the build, tests and generated-file check so the collective [privacy directory](privacy/index.html), individual policy pages and downloadable Markdown copies remain consistent. App repositories are not needed to build this website.

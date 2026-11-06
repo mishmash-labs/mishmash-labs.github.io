@@ -13,22 +13,30 @@ const decode = (text) => text.replace(/&(?:amp|lt|gt|quot|#39);/g, (entity) => (
 })[entity]);
 const normalize = (text) => text.replace(/\s+/g, ' ').trim();
 
-test('all seven apps have a complete static product page and privacy page', () => {
-  assert.equal(apps.length, 7);
-  assert.equal(new Set(apps.map((app) => app.slug)).size, 7);
-  assert.equal(pages.length, 16);
+test('all apps have a complete static product page and privacy page', () => {
+  assert.equal(apps.length, 8);
+  assert.equal(new Set(apps.map((app) => app.slug)).size, 8);
+  assert.equal(pages.length, 2 + apps.length * 2);
   for (const app of apps) {
     const product = files.get(path.join('apps', app.slug, 'index.html'));
     const policy = files.get(path.join('privacy', app.slug, 'index.html'));
     assert.ok(product && policy, app.name);
-    assert.ok(product.includes(app.googlePlay.replaceAll('&', '&amp;')), app.name);
     assert.ok(product.includes(`privacy/${app.slug}/index.html`), app.name);
     assert.equal((product.match(/<details>/g) || []).length, app.faqs.length);
     assert.equal(app.features.length, 6);
     assert.equal(app.steps.length, 3);
     assert.ok(product.includes('Illustrative layout'));
     assert.ok(product.includes('View original policy (Markdown)'));
-    assert.equal(Boolean(app.appStore), app.platforms.includes('iOS'), app.name);
+    if (app.comingSoon) {
+      assert.match(product, /<span class="store-button store-coming-soon" role="status">Coming soon<\/span>/, app.name);
+      assert.doesNotMatch(product, /href="https:\/\/(?:play\.google\.com|apps\.apple\.com)\//, app.name);
+      assert.match(files.get('index.html'), /<article class="app-card yellow"[^>]*>[\s\S]*?<span>Coming soon<\/span>/, app.name);
+      assert.equal(app.googlePlay, undefined, app.name);
+      assert.equal(app.appStore, undefined, app.name);
+    } else {
+      assert.ok(product.includes(app.googlePlay.replaceAll('&', '&amp;')), app.name);
+      assert.equal(Boolean(app.appStore), app.platforms.includes('iOS'), app.name);
+    }
     if (app.appStore) assert.ok(product.includes(app.appStore), app.name);
   }
 });
@@ -163,9 +171,11 @@ test('every policy publishes a revision date and a direct privacy contact', () =
 });
 
 test('policy renderer handles wrapped lists, hard breaks, links, and safe inline markup', () => {
-  const { html } = renderPolicy('# Policy\n\n## Section\n\nFirst  \nsecond.\n\n- **Store:** a wrapped\n  item with `code` and <https://example.com/privacy>\n- [Another provider](https://example.com/terms?a=1&b=2)\n\n<script>alert("x")</script>');
+  const { html } = renderPolicy('# Policy\n\n## Section\n\nFirst  \nsecond.\n\n- **Store:** a wrapped\n  item with `code`, `https://example.com/code`, and <https://example.com/privacy>\n- [Another provider](https://example.com/terms?a=1&b=2)\n\n<script>alert("x")</script>');
   assert.match(html, /First<br>second\./);
   assert.match(html, /<li><strong>Store:<\/strong> a wrapped item with <code>code<\/code>/);
+  assert.match(html, /<code>https:\/\/example\.com\/code<\/code>/);
+  assert.doesNotMatch(html, /href="https:\/\/example\.com\/code"/);
   assert.match(html, /href="https:\/\/example.com\/terms\?a=1&amp;b=2"/);
   assert.ok(!html.includes('<script>'));
   assert.match(html, /&lt;script&gt;/);
@@ -181,7 +191,7 @@ test('catalog categories and privacy directory include every app', () => {
   }
   assert.equal(apps.filter((app) => app.category === 'Everyday tools').length, 3);
   assert.equal(apps.filter((app) => app.category === 'Lifestyle').length, 2);
-  assert.equal(apps.filter((app) => app.category === 'Games & sport').length, 2);
+  assert.equal(apps.filter((app) => app.category === 'Games & sport').length, 3);
   assert.match(home, /role="status" aria-live="polite"/);
   assert.match(home, /class="app-filters"[^>]* hidden/);
 });

@@ -201,6 +201,40 @@
     ]
   },
   {
+    "slug": "ascendant-path",
+    "name": "Ascendant Path",
+    "subtitle": "Idle Life RPG",
+    "category": "Games & sport",
+    "color": "yellow",
+    "icon": "ascendant-path-icon.png",
+    "policy": "ascendantpath_policy.md",
+    "tagline": "One life is only\nThe beginning.",
+    "summary": "Grow every job and skill together, build a lasting legacy through rebirth, and discover realms beyond one lifetime.",
+    "description": "Begin with nothing and watch every unlocked job and skill advance together. Build a home, grow through rebirth, and discover new realms in a fantasy idle RPG about the lives and legacy you create.",
+    "platforms": ["Android", "iOS"],
+    "pricing": "Coming soon",
+    "comingSoon": true,
+    "highlights": ["Every path grows together", "No account required"],
+    "facts": [["Genre", "Idle life RPG"], ["Progress", "All paths at once"], ["Platforms", "Android + iOS"], ["Release", "Coming soon"]],
+    "features": [
+      ["Grow every path together", "All unlocked jobs and skills progress automatically at the same time. Build commoner, military, and magical careers side by side."],
+      ["Build a life worth remembering", "Spend your earnings on homes, equipment, and comforts. Balance their benefits against daily upkeep as your estate grows."],
+      ["Rise through rebirth", "Begin another life with remembered levels to grow faster. Five prestige layers bring new rewards and deeper resets."],
+      ["Discover a deeper adventure", "Take on challenges, reach milestones, and unlock new abilities and realms as your journey unfolds."],
+      ["Choose your own chapters", "Explore optional stories with choices whose rewards, costs, and lasting effects are shown before you decide."],
+      ["Return to your journey", "Earn up to one hour of offline progress when your journey is running. Save locally, copy a backup, or import a journey."]
+    ],
+    "steps": [["Begin at the bottom", "Start your first life and let every unlocked path work together."], ["Shape your journey", "Build skills, find work, and decide how to invest your earnings."], ["Rise again", "Choose when to rebirth and carry a lasting legacy into the next life."]],
+    "privacySummary": "Your journey is saved locally, with no game account required. The free game uses Google Mobile Ads, RevenueCat for optional purchases, and Google for online time checks; these providers may process device or service information. Backups are not encrypted.",
+    "faqs": [
+      ["Is Ascendant Path available yet?", "Not yet. The game is planned for Android and iOS, and store links will appear here when it is available."],
+      ["How does progress work?", "Every unlocked job and skill advances automatically at the same time. Rebirth resets current progress while remembered levels help you grow faster."],
+      ["Can I play offline?", "Core play works offline. Online time checks help verify time away, and ads and purchase features need an internet connection."],
+      ["What information does the game use?", "Your journey is stored on your device. Advertising, purchase services, online time checks, and support messages can involve information being sent to third parties. Read the full privacy policy for details."]
+    ],
+    "disclaimer": "Ascendant Path is an independent game and is not affiliated with any referenced games, their creators, or publishers."
+  },
+  {
     "slug": "profpl",
     "name": "proFPL",
     "subtitle": "FPL Manager",

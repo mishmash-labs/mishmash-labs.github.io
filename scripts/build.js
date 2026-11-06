@@ -102,7 +102,11 @@ function appImage(app, base, size = 64, eager = false) {
 }
 
 function storeLinks(app, className = '') {
-  return `<div class="store-links${className ? ` ${className}` : ''}">${externalLink(app.googlePlay, `${icon('play')}<span><small>Get it on</small>Google Play</span>`, 'store-button')}${app.appStore ? externalLink(app.appStore, `<span class="apple-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12.5c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.8C7.3 7.8 5 9.7 5 13c0 2 1.1 4.2 2.1 5.6.6.9 1.3 1.8 2.3 1.8s1.4-.6 2.7-.6 1.7.6 2.8.6 1.7-.9 2.3-1.8c.7-1 1-1.7 1.5-2.8-1.5-.7-1.7-2.2-1.7-3.3ZM14.4 6.5c.5-.7 1-1.6.9-2.5-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.5.9.1 1.8-.5 2.4-1.2Z"/></svg></span><span><small>Download on the</small>App Store</span>`, 'store-button') : ''}</div>`;
+  const appStoreIcon = '<span class="apple-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12.5c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.8C7.3 7.8 5 9.7 5 13c0 2 1.1 4.2 2.1 5.6.6.9 1.3 1.8 2.3 1.8s1.4-.6 2.7-.6 1.7.6 2.8.6 1.7-.9 2.3-1.8c.7-1 1-1.7 1.5-2.8-1.5-.7-1.7-2.2-1.7-3.3ZM14.4 6.5c.5-.7 1-1.6.9-2.5-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.5.9.1 1.8-.5 2.4-1.2Z"/></svg></span>';
+  const links = app.comingSoon
+    ? '<span class="store-button store-coming-soon" role="status">Coming soon</span>'
+    : `${app.googlePlay ? externalLink(app.googlePlay, `${icon('play')}<span><small>Get it on</small>Google Play</span>`, 'store-button') : ''}${app.appStore ? externalLink(app.appStore, `${appStoreIcon}<span><small>Download on the</small>App Store</span>`, 'store-button') : ''}`;
+  return `<div class="store-links${className ? ` ${className}` : ''}">${links}</div>`;
 }
 
 function preview(app, base) {
@@ -113,6 +117,7 @@ function preview(app, base) {
     'konvertr-pro': `<div class="preview-title"><span>Your pocket toolkit</span><span class="mini-badge">Pro</span></div><div class="tool-grid"><span><b>cm</b>Convert</span><span><b>+</b>Calculate</span><span>${icon('star')}Favorites</span><span><b>%</b>Tip split</span><span><b>12:00</b>Time zones</span><span><b>N</b>Compass</span></div><div class="preview-note">Less app-switching. More getting things done.</div>`,
     'explore-lahore': `<div class="preview-title"><span>A day in Lahore</span><span class="mini-badge">Your itinerary</span></div><div class="city-visual"><span></span><span></span><span></span><span></span><span></span></div><div class="itinerary-row"><b>01</b><span>Morning discoveries</span></div><div class="itinerary-row"><b>02</b><span>Afternoon wanderings</span></div><div class="itinerary-row"><b>03</b><span>Evening favorites</span></div>`,
     'word-sleuth': `<div class="preview-title"><span>A little wordplay</span>${icon('star')}</div><div class="word-grid">${'CLUESLOGICWORDS'.split('').map((letter, i) => `<span class="${i < 5 ? 'solved' : ''}">${letter}</span>`).join('')}</div><div class="preview-note">Connect. Decode. Discover.</div><div class="preview-tiles"><span>8 ways to find your aha</span></div>`,
+    'ascendant-path': `<div class="preview-title"><span>A new life begins</span><span class="mini-badge">Ascend</span></div><div class="conversion-box"><small>Every path</small><strong>Growing</strong></div><div class="preview-tiles"><span>${icon('check')} Jobs & skills</span><span>${icon('check')} A lasting legacy</span></div><div class="preview-note">Every life is another beginning.</div>`,
     profpl: `<div class="preview-title"><span>Your next gameweek</span><span class="mini-badge">Squad planner</span></div><div class="pitch"><div>${shirt('1')}</div><div>${shirt('2')}${shirt('3')}${shirt('4')}</div><div>${shirt('5')}${shirt('6')}${shirt('7')}${shirt('8')}</div><div>${shirt('9')}${shirt('10')}${shirt('11')}</div></div><div class="preview-note">A little planning. A bigger gameweek.</div>`
   };
   return `<div class="product-visual ${app.color}"><div class="visual-label">${appImage(app, base, 36)}<span>${escape(app.name)}</span><span class="visual-dots" aria-hidden="true">&bull; &bull; &bull;</span></div><div class="preview-board" aria-hidden="true">${previews[app.slug]}</div><p class="preview-caption">Illustrative layout &middot; not an app screenshot</p></div>`;
@@ -123,19 +128,20 @@ function shirt(number) {
 }
 
 function appCard(app, base, featured = false) {
+  const tags = app.comingSoon ? ['Coming soon', app.highlights[0]] : app.highlights.slice(0, 2);
   return `<article class="app-card ${app.color}${featured ? ' featured-card' : ''}" data-category="${escape(app.category)}">
     <div class="card-content">
       <div class="card-top">${appImage(app, base)}<span class="card-category">${featured ? 'Fresh from the lab' : escape(app.category)}</span></div>
       <h3><a href="${base}apps/${app.slug}/index.html">${escape(app.name)} ${icon('external')}</a></h3>
       <p>${escape(app.summary)}</p>
-      <div class="card-tags">${app.highlights.slice(0, 2).map((text) => `<span>${escape(text)}</span>`).join('')}</div>
+      <div class="card-tags">${tags.map((text) => `<span>${escape(text)}</span>`).join('')}</div>
       <div class="card-bottom"><a class="text-link" href="${base}apps/${app.slug}/index.html">Explore ${escape(app.name)} ${icon('arrow')}</a><span>${app.platforms.join(' + ')}</span></div>
     </div>${featured ? `\n    ${preview(app, base)}` : ''}
   </article>`;
 }
 
 function homepage() {
-  const heroApps = [apps[1], apps[2], apps[5], apps[4], apps[6]];
+  const heroApps = [apps[1], apps[2], apps[5], apps.find((app) => app.slug === 'ascendant-path'), apps[6]];
   const content = `<main id="main">
     <section class="hero container" id="home" aria-labelledby="hero-title">
       <div class="hero-copy">
@@ -155,7 +161,7 @@ function homepage() {
     <div class="intro-strip"><div class="container"><span>Made for real life</span><span>${icon('star')} A little more useful</span><span>${icon('star')} A little more playful</span><span>${icon('star')} A little more you</span></div></div>
     <section class="catalog section-space container" id="apps" aria-labelledby="apps-title">
       <div class="section-heading"><div><p class="eyebrow">The app collection</p><h2 id="apps-title">Different interests.<br>Same attention to detail.</h2></div><p>From your morning routine to your next gameweek, there's a little something for everyone.</p></div>
-      <div class="catalog-toolbar"><div class="app-filters" role="group" aria-label="Filter apps by category" hidden>${['All apps', 'Everyday tools', 'Lifestyle', 'Games & sport'].map((category, i) => `<button type="button" data-filter="${i === 0 ? 'all' : escape(category)}" aria-pressed="${i === 0}">${escape(category)}</button>`).join('')}</div><p id="filter-status" role="status" aria-live="polite">7 apps to explore</p></div>
+      <div class="catalog-toolbar"><div class="app-filters" role="group" aria-label="Filter apps by category" hidden>${['All apps', 'Everyday tools', 'Lifestyle', 'Games & sport'].map((category, i) => `<button type="button" data-filter="${i === 0 ? 'all' : escape(category)}" aria-pressed="${i === 0}">${escape(category)}</button>`).join('')}</div><p id="filter-status" role="status" aria-live="polite">${apps.length} apps to explore</p></div>
       <div class="app-grid">${apps.map((app, i) => appCard(app, '', i === 0)).join('')}</div>
     </section>
     <section class="studio-section section-space" id="about" aria-labelledby="studio-title">
@@ -167,7 +173,7 @@ function homepage() {
     </section>
     <section class="container contact-section section-space" id="contact" aria-labelledby="contact-title"><div class="contact-panel lavender"><div><p class="eyebrow">Let's talk</p><h2 id="contact-title">Have a little idea?<br>Let's make it useful.</h2><p>A project, a question, an app that needs a fix, or just a hello.<br>There's a real person on the other end.</p><a class="button button-dark" href="mailto:${email}">${icon('mail')} Say hello by email ${icon('external')}</a><a class="contact-address" href="mailto:${email}">${email}</a></div><div class="contact-shape" aria-hidden="true">${icon('star')}</div></div></section>
   </main>`;
-  return documentPage({ title: 'Mishmash Labs — Good little apps for your everyday', description: 'An independent app studio by Fawad Khan. Discover Autofolio, 5 Prayers, Konvertr, Konvertr Pro, Explore Lahore, Word Sleuth, and proFPL.', base: '', route: '/', content });
+  return documentPage({ title: 'Mishmash Labs — Good little apps for your everyday', description: 'An independent app studio by Fawad Khan. Discover Autofolio, 5 Prayers, Konvertr, Konvertr Pro, Explore Lahore, Word Sleuth, Ascendant Path, and proFPL.', base: '', route: '/', content });
 }
 
 function appPage(app) {
@@ -185,7 +191,7 @@ function appPage(app) {
     <section class="container section-space" aria-labelledby="features-title"><div class="section-heading"><div><p class="eyebrow">A closer look</p><h2 id="features-title">Small details.<br>A useful difference.</h2></div><p>Here's what you can do with ${escape(app.name)}.</p></div><div class="feature-grid">${app.features.map(([title, text], i) => `<article><span class="feature-number ${app.color}">${String(i + 1).padStart(2, '0')}</span><h3>${escape(title)}</h3><p>${escape(text)}</p></article>`).join('')}</div></section>
     <section class="getting-started section-space"><div class="container"><p class="eyebrow">Make yourself at home</p><h2>From download to doing.</h2><div class="steps-grid">${app.steps.map(([title, text], i) => `<div><span class="step-number">${i + 1}</span><h3>${escape(title)}</h3><p>${escape(text)}</p></div>`).join('')}</div></div></section>
     <section class="container section-space app-information"><div class="privacy-callout mint"><span class="value-icon">${icon('shield')}</span><p class="eyebrow">Your data, explained</p><h2>No mystery.<br>Just the details.</h2><p>${escape(app.privacySummary)}</p><a class="text-link" href="${base}privacy/${app.slug}/index.html">${escape(app.name)} privacy policy ${icon('arrow')}</a><a class="subtle-link" href="${base}privacy_policies/${app.policy}">View original policy (Markdown)</a></div><div class="faq-section"><p class="eyebrow">Good to know</p><h2>A few helpful answers.</h2>${app.faqs.map(([question, answer]) => `<details><summary>${escape(question)}<span aria-hidden="true">+</span></summary><p>${escape(answer)}</p></details>`).join('')}<p class="support-note">Something else on your mind? <a href="mailto:${email}?subject=${encodeURIComponent(`${app.name} support`)}">Get in touch.</a></p></div></section>
-    <section class="container section-space download-section"><div class="download-panel ${app.color}">${appImage(app, base, 80)}<div><p class="eyebrow">A little more ${app.slug === 'word-sleuth' || app.slug === 'profpl' ? 'play' : 'possibility'} in your pocket</p><h2>Make room for ${escape(app.name)}.</h2><p>${escape(app.pricing)}. See the store for current availability and pricing.</p>${storeLinks(app)}</div></div>${app.disclaimer ? `<p class="disclaimer">${escape(app.disclaimer)}</p>` : ''}</section>
+    <section class="container section-space download-section"><div class="download-panel ${app.color}">${appImage(app, base, 80)}<div><p class="eyebrow">A little more ${app.slug === 'word-sleuth' || app.slug === 'profpl' || app.slug === 'ascendant-path' ? 'play' : 'possibility'} in your pocket</p><h2>Make room for ${escape(app.name)}.</h2><p>${escape(app.pricing)}${app.comingSoon ? '.' : '. See the store for current availability and pricing.'}</p>${storeLinks(app)}</div></div>${app.disclaimer ? `<p class="disclaimer">${escape(app.disclaimer)}</p>` : ''}</section>
     <section class="container section-space more-apps"><div class="section-heading"><div><p class="eyebrow">Keep exploring</p><h2>More from the mishmash.</h2></div><a class="text-link" href="${base}index.html#apps">See all apps ${icon('arrow')}</a></div><div class="related-grid">${more.map((candidate) => appCard(candidate, base)).join('')}</div></section>
   </main>`;
   return documentPage({ title: `${app.name}: ${app.subtitle} — Mishmash Labs`, description: app.summary, base, route: `/apps/${app.slug}/`, content, current: 'apps', image: `assets/${app.icon}` });
@@ -203,6 +209,7 @@ function renderPolicy(markdown) {
     const tokens = [];
     const token = (html) => `\u0000${tokens.push(html) - 1}\u0000`;
     let value = text
+      .replace(/`([^`]+)`/g, (_, code) => token(`<code>${escape(code)}</code>`))
       .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, (_, label, url) => token(`<a href="${escape(url)}">${escape(label)}</a>`))
       .replace(/<?https?:\/\/[^\s<>]+>?/g, (match) => {
         const url = match.replace(/^<|>$/g, '');
@@ -210,7 +217,6 @@ function renderPolicy(markdown) {
       });
     value = escape(value)
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\u0000(\d+)\u0000/g, (_, index) => tokens[Number(index)]);
     return value;
   };
@@ -273,7 +279,7 @@ function privacyIndex() {
       <p>This website does not include visitor counters, analytics, advertising, or tracking scripts. Our site code does not set cookies or create visitor identifiers. JavaScript is used only to enhance mobile navigation and app filtering.</p>
       <p>GitHub Pages hosts this website, and fonts load from Google Fonts. These providers receive connection information when serving their resources. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a> and <a href="https://policies.google.com/privacy">Google's privacy policy</a>. Questions? <a href="mailto:${email}">Contact Mishmash Labs.</a></p>
     </section></main>`;
-  return documentPage({ title: 'App Privacy Policies — Mishmash Labs', description: 'Find the privacy policies for all seven Mishmash Labs apps, including Autofolio, 5 Prayers, Konvertr, Word Sleuth, and proFPL.', base, route: '/privacy/', content, current: 'privacy' });
+  return documentPage({ title: 'App Privacy Policies — Mishmash Labs', description: 'Find the privacy policies for all eight Mishmash Labs apps, including Autofolio, 5 Prayers, Konvertr, Word Sleuth, Ascendant Path, and proFPL.', base, route: '/privacy/', content, current: 'privacy' });
 }
 
 function generateSite() {
